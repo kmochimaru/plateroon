@@ -1,0 +1,125 @@
+/*!
+ * Start Bootstrap - Shop Homepage (http://startbootstrap.com/template-overviews/shop-homepage)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
+ */
+body {
+    
+    padding-top: 54px;
+    font-family: 'Prompt', sans-serif;
+}
+
+.col-lg-3{
+    margin-top: 15px;
+}
+
+#logo{
+    margin-bottom: 15px;
+}
+
+#nav-text{
+    font-family: 'Dancing Script', cursive;
+}
+
+#content{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.list-group-item.list-group-item-action:hover{
+    background-color: #01549b;
+    color: white;
+}
+
+.list-group-item.active{
+    
+    
+}
+
+
+#map,
+.fb-page,
+.img-space-top{
+    padding-top: 20px;
+}
+
+.icon-social{
+    padding-top: 50px;
+}
+
+dl{
+    font-size: 18px;
+}
+
+#search{
+    margin: auto;
+}
+
+.img-zoom{
+    
+    max-width: 100%;
+  
+    -moz-transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+     transition: all 0.3s;
+}
+
+.img-zoom:hover {
+  -moz-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  transform: scale(1.2);
+}
+
+@media (min-width: 992px) {
+    body {
+        padding-top: 56px;
+        font-family: 'Prompt', sans-serif;
+    }
+}
+
+.agileits_social_icons li{
+	display:inline-block;
+}
+.agileits_social_icons li a{
+	border: 2px solid #fff;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -o-border-radius: 20px;
+    -ms-border-radius: 20px;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    display: block;
+    text-align: center;
+}
+.agileits_social_icons li a i {
+    padding: 0.6em 0 0;
+}
+.agileits_social_icons li a.facebook:hover{
+	background:#3b5998;
+	border-color:#3b5998;
+}
+.agileits_social_icons li a.twitter:hover{
+	background:#55acee;
+	border-color:#55acee;
+}
+.agileits_social_icons li a.google:hover{
+	background:#dd4b39;
+	border-color:#dd4b39;
+}
+.agileits_social_icons li a.instagram:hover{
+	background:#833ab4;
+	border-color:#833ab4;
+}
+.agileits_social_icons li a.dribbble:hover{
+	background:#ea4c89;
+	border-color:#ea4c89;
+}
+.agileits_social_icons_team li a {
+    border: 2px solid #212121;
+    color: #212121;
+}
+.agileits_social_icons_team li a:hover{
+    color: #fff;
+}  
