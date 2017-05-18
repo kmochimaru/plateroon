@@ -5,6 +5,7 @@
  */
 package controller;
 
+import com.google.gson.Gson;
 import daoImp.AgentDaoImp;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,23 +34,29 @@ public class LoginController extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         boolean chk = false;
+        String json = "";
+        Gson gson = new Gson();
         AgentDaoImp dao = new AgentDaoImp();
         String username = request.getParameter("username");                     
         String password = request.getParameter("password"); 
         
+        response.setContentType("application/json");
         if(username.equals("admin")==true && password.equals("adminabc")==true){
             session.setAttribute("username", "ผู้ดูแลระบบ");
-            response.sendRedirect("admin/dashboard.jsp");
+            json = gson.toJson("admin");
+            //response.sendRedirect("admin/dashboard.jsp");
         }else{
+            System.out.println("chk db");
             chk = dao.isValidLogin(username, password);
             if(chk){
                 session.setAttribute("username", username);
-                response.sendRedirect("index.jsp");
+                json = gson.toJson("true");
             }else{
                 session.setAttribute("username", null);
-                response.sendRedirect("login.jsp");
+                json = gson.toJson("false");
             }
         }
+        response.getWriter().write(json);
     }
 
 }
