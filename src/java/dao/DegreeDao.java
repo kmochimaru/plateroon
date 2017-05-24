@@ -17,5 +17,5 @@ public interface DegreeDao {
     public void updateDegree(Degree degree);
     public List<Degree> getAllDegree();
     public void delDegree(Degree degree);
-    public void isDegree(String id);
+    public List<Degree> getDegreeById(String id);
 }

@@ -24,7 +24,6 @@
             <!-- Page Content -->
             <div></div>
             <div class="container" ng-app="myApp" ng-controller="agentController">
-
                 <div class="row" id="content">
                     <jsp:include page="static/navLeft.jsp" />
                     <div class="col-lg-9" align="center">
@@ -40,6 +39,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="(key, a) in agent" >
+
                                     <td>
                                         {{ a.agentId}}
                                     </td>
@@ -88,6 +88,12 @@
                                                                 <div class="col-10">
                                                                     <input type="hidden" name="idCard" value="{{ a.idcard}}" />
                                                                     <input class="form-control" type="text" maxlength="13" placeholder="เลขบัตรประจำตัวประชาชน" value="{{ a.idcard}}" name="idCard" id="idCard" required="required" disabled="disabled">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="nationality" class="col-2 col-form-label">สัญชาติ</label>
+                                                                <div class="col-lg-10">
+                                                                    <input class="form-control" type="text" placeholder="สัญชาติ" value="{{ a.nationality}}" name="nationality" id="nationality" required="required" >
                                                                 </div>
                                                             </div>
                                                             <div class="form-group row">

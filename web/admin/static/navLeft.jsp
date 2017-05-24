@@ -18,7 +18,9 @@
     <!--h1 class="my-4">PLATEROON</h1-->
     <div class="list-group">
         <a href="#" class="list-group-item active"><i class="fa fa-home" aria-hidden="true"></i>&nbsp;จัดการข้อมูลต่างๆ</a>
-        <a href="dashboard.jsp" class="list-group-item list-group-item-action"><span class="badge badge-warning" ng-if="notify > 0">{{ notify}}</span> &nbsp;<b>รออนุมัติ</b></a>
+        <a href="dashboard.jsp" class="list-group-item list-group-item-action">&nbsp;<b>รออนุมัติ</b>&nbsp;&nbsp;&nbsp;
+            <span class="badge badge-warning badge-pill" ng-if="notify > 0">{{ notify}}</span>
+        </a>
         <a href="agent.jsp" class="list-group-item list-group-item-action"> &nbsp;<b>ตัวแทนจำหน่าย</b></a>
         <a href="degree.jsp" class="list-group-item list-group-item-action">&nbsp;<b>ระดับผู้ใช้ระบบ</b></a>
     </div>

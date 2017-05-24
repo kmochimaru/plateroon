@@ -20,3 +20,4 @@
 <script src="vendor/tether/tether.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+

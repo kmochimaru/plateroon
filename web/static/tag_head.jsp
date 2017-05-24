@@ -35,6 +35,5 @@
 <link rel="shortcut icon" href="img/Plateroon-LOGO.ico">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
 <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 <link rel="stylesheet" href="css/icon-social.css">
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">

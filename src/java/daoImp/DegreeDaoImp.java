@@ -103,8 +103,27 @@ public class DegreeDaoImp implements DegreeDao{
     }
 
     @Override
-    public void isDegree(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Degree> getDegreeById(String id) {
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Degree> list = new ArrayList();
+        try{
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("FROM Degree WHERE id = :id");
+            query.setParameter("id", Integer.parseInt(id));
+            list = query.list();
+            transaction.commit();
+        }catch(RuntimeException e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            System.out.println("RuntimeException getDegreeById ====>  "+e);
+        }finally{
+            session.flush();
+            session.close();
+        }
+        
+        return list;
     }
     
 }

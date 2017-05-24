@@ -6,7 +6,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="container">
-        <a class="navbar-brand" href="index.jsp" style="margin-left: 30px;"><h3 id="nav-text">PLATEROON BRAND</h3></a>
+        <a class="navbar-brand" href="index.jsp" style="margin-left: 30px;"><h4 id="nav-text">Plateroon Co.,LTD.</h4></a>
         <div class="collapse navbar-collapse" id="navbarExample">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -29,8 +29,9 @@
                         </c:if>
                         <c:if test="${username != null}">
                             <a class="dropdown-item" href="logout.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;ออกระบบ</a>
+                            <a class="dropdown-item" href="editProfile.jsp"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;แก้ไขข้อมูลส่วนตัว</a>
+                            <a class="dropdown-item" href="register.jsp"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;ลงทะเบียน</a>
                         </c:if>
-                        <a class="dropdown-item" href="register.jsp"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;ลงทะเบียน</a>
                     </div>
                 </li>
             </ul>

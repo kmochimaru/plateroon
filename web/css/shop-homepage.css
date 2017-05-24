@@ -4,7 +4,6 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-shop-homepage/blob/master/LICENSE)
  */
 body {
-    
     padding-top: 54px;
     font-family: 'Prompt', sans-serif;
 }
@@ -17,8 +16,9 @@ body {
     margin-bottom: 15px;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Pompiere');
 #nav-text{
-    font-family: 'Dancing Script', cursive;
+    font-family: 'Pompiere', cursive;
 }
 
 #content{
@@ -27,13 +27,13 @@ body {
 }
 
 .list-group-item.list-group-item-action:hover{
-    background-color: #01549b;
+    background-color: #00ccff;
     color: white;
 }
 
 .list-group-item.active{
-    
-    
+    background-color: #00ccff;
+    border-color: #00ccff;
 }
 
 

@@ -24,3 +24,17 @@
 <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
 <script src="${pageContext.request.contextPath}/admin/js/dashboard.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery.Thailand.js/dependencies/JQL.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/jquery.Thailand.js/jquery.Thailand.min.js"></script>
+<script>
+    $(document).ready(function () {
+        //Load address
+        $.Thailand({
+            database: '../jquery.Thailand.js/data3.json',
+            onComplete: function () {
+                $('#loader, #address').toggle();
+            }
+        });
+    })
+</script>

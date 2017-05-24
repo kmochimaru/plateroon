@@ -25,13 +25,18 @@
                 <i class="fa fa-user"></i>
                 <input type="password" name="password"  placeholder="รหัสผ่าน" required="required"/>
                 <i class="fa fa-key"></i>
-                <a href="#">ลืมรหัสผ่าน ?</a>
+                <a href="#" data-toggle="tooltip" title="Tooltip on top">ลืมรหัสผ่าน ?</a>
                 <button type="submit">
                     <i class="spinner"></i>
                     <span class="state" style="font-family: 'Prompt', sans-serif;">เข้าสู่ระบบ</span>
                 </button>
             </form>
-            <footer><a href="index.jsp">กลับเข้าสู่เว็บไซต์</a> &nbsp;&nbsp;&nbsp; <a href="register.jsp">สมัครเป็นตัวแทนจำหน่าย</a></footer>
+            <footer>
+                    <a href="index.jsp">กลับเข้าสู่เว็บไซต์</a> &nbsp;&nbsp;&nbsp; 
+                    <c:if test="${username != null || username != ''}">
+                        <a href="register.jsp">สมัครเป็นตัวแทนจำหน่าย</a>
+                    </c:if>
+            </footer>
         </div>
 
         <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>

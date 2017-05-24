@@ -1,3 +1,4 @@
+<%@page import="daoImp.DegreeDaoImp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -15,8 +16,12 @@
         <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
     </head>
     <body>
+        <% 
+            DegreeDaoImp dao = new DegreeDaoImp();
+            request.getSession().setAttribute("allDegree", dao.getAllDegree());
+        %>
         <div class="wrapper">
-            <div class="container" >
+            <div class="container" ng-app="profile" ng-controller="mainController">
                 <!-- Name Section -->
 
                 <div class="row" style="margin-left: 10%">
@@ -74,10 +79,11 @@
                                     <div class="col-sm-2">
                                         <select name="degreeId" class="form-control" required="required">
                                             <option value="" selected disabled>ระดับ</option>
-                                            <option value="1">DI</option>
-                                            <option value="2">VIP</option>
-                                            <option value="3">Main</option>
-                                            <option value="4">Sub</option>
+                                            <c:forEach items="${allDegree}" var="d"> 
+                                                <c:if test="${ d.degreeId > degreeId}">
+                                                    <option value="${ d.degreeId }">${ d.degreeName }</option>
+                                                </c:if>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>

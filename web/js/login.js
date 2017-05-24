@@ -52,9 +52,6 @@ $('.login').on('submit', function (e) {
         error: function(jqXHR, textStatus, errorThrown, data){
             toastr.warning('กรุณแจ้งผู้ดูแลระบบ','เข้าระบบล้มเหลว')
         }
-    });
-    
-            
-            
+    });            
             
 });

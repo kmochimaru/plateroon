@@ -13,7 +13,7 @@
 
 <div class="col-lg-3">
     <div id="logo" align="center">
-        <img src="img/Plateroon-LOGO.ico" width="150" height="150"  />
+        <img src="img/Plateroon-LOGO.ico" width="200" height="200"  />
     </div>
     <!--h1 class="my-4">PLATEROON</h1-->
     <div class="list-group">

@@ -18,6 +18,7 @@ public interface AgentDao {
     public List<Agent> getAgentByActiveN();
     public List<Agent> getAgentByActiveY();
     public List<Agent> getAgentById(String id);
+    public List<Agent> getAgentByUsername(String username);
     public void updateAgent(Agent agent);
     public void updateApprove(String agent_id);
     public void delAgent(Agent agent);

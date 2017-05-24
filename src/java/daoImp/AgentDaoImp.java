@@ -279,5 +279,28 @@ public class AgentDaoImp implements AgentDao{
         
         return list;
     }
+
+    @Override
+    public List<Agent> getAgentByUsername(String username) {
+        Transaction transaction = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Agent> list = new ArrayList();
+        try{
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("FROM Agent WHERE username = :username");
+            query.setParameter("username", username);
+            list = query.list();
+            transaction.commit();
+        }catch(RuntimeException e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            System.out.println("RuntimeException getAgentByUsername ====>  "+e);
+        }finally{
+            session.flush();
+            session.close();
+        }
+        return list;
+    }
     
 }

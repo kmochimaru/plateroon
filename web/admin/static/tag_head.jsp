@@ -38,3 +38,4 @@
 <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
 <link rel="stylesheet" href="../css/icon-social.css">
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/./jquery.Thailand.js/jquery.Thailand.min.css">
