@@ -10,7 +10,6 @@ $(document).ready(function(){
 
     $("form").submit(function(e){
         e.preventDefault()
-        console.log($(this))
         e.stopPropagation()
         var postData = $(this).serializeArray();
         var formURL = $(this).attr("action");
@@ -19,7 +18,7 @@ $(document).ready(function(){
             url : formURL,
             type: "POST",
             data : postData,
-
+            
             success:function(data, textStatus, jqXHR){
                 toastr.success('รออนุมัติจากผู้ดูแลระบบ','ลงทะเบียนสำเร็จ !')
                 $('button[type="reset"]').trigger('click')
@@ -28,9 +27,6 @@ $(document).ready(function(){
                 toastr.error('กรุณาติดต่อผู้ดูแลระบบ','ลงทะเบียนล้มเหลว !')
             }
         });
-        
-            
-        //$(this).removeAttr('action')
         
     });
 

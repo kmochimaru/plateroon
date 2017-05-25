@@ -26,4 +26,5 @@ public interface AgentDao {
     public void updatePassword(String pass, String agentId);
     public boolean isValidIdCard(String idcard);
     public boolean isValidAgentId(String agent_id);
+    public List<Agent> searchAgent(String amphur, String province);
 }

@@ -302,5 +302,37 @@ public class AgentDaoImp implements AgentDao{
         }
         return list;
     }
+
+    @Override
+    public List<Agent> searchAgent(String amphur, String province) {
+        Transaction transaction = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Agent> list = new ArrayList();
+        String hql = "";
+        if(amphur.equals("")==false && province.equals("")==false)
+            hql="FROM Agent WHERE province = '"+province+"' AND amphur = '"+amphur+"' AND active = 'Y'";
+        else if(amphur.equals("")==false && province.equals("")==true)
+            hql="FROM Agent WHERE amphur = '"+amphur+"' AND active = 'Y'";
+        else if(amphur.equals("")==true && province.equals("")==false)
+            hql="FROM Agent WHERE province = '"+province+"' AND active = 'Y'";
+        else
+            hql="";
+        
+        try{
+            transaction = session.beginTransaction();
+            Query query = session.createQuery(hql);
+            list = query.list();
+            transaction.commit();
+        }catch(RuntimeException e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            System.out.println("RuntimeException searchAgent ====>  "+e);
+        }finally{
+            session.flush();
+            session.close();
+        }
+        return list;
+    }
     
 }

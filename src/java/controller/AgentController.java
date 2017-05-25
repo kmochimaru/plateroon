@@ -73,6 +73,8 @@ public class AgentController extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         List <Agent> list = new ArrayList();
         String action = (String)request.getParameter("action")==null?"":(String)request.getParameter("action");
+        String amphoe =  request.getParameter("amphoe")==null?"":request.getParameter("amphoe");
+        String province = request.getParameter("province")==null?"":request.getParameter("province");
 
         if(action.equals("add")){
             bean = new Agent();
@@ -110,6 +112,7 @@ public class AgentController extends HttpServlet {
             dao.addAgent(bean);
             response.setContentType("text/html");
             response.setStatus(HttpServletResponse.SC_OK);
+            
         }else if(action.equals("activeN")){
             dao = new AgentDaoImp();
             list = dao.getAgentByActiveN();
@@ -130,6 +133,7 @@ public class AgentController extends HttpServlet {
             json = gson.toJson(list);
             response.setContentType("application/json");
             response.getWriter().write(json);
+            
         }else if(action.equals("update")){
             bean = new Agent();
             dao  = new AgentDaoImp();
@@ -164,12 +168,26 @@ public class AgentController extends HttpServlet {
             out.println(" <script>window.location.replace(document.referrer)</script>");
             out.println(" </body>");
             out.println("</html>");
+            
         }else if(action.equals("readByUsername")){
             dao = new AgentDaoImp();
             list = dao.getAgentByUsername(request.getSession().getAttribute("username").toString());
             json = gson.toJson(list);
             response.setContentType("application/json");
             response.getWriter().write(json);
+            
+        }else if(action.equals("searchAgent")){
+            dao = new AgentDaoImp();
+            list = dao.searchAgent(amphoe, province);
+            request.getSession().setAttribute("search", list);
+            PrintWriter out = response.getWriter();
+            out.println("<!DOCTYPE HTML>");
+            out.println("<html>");
+            out.println(" <body>");
+            out.println(" <script>window.location.replace(document.referrer)</script>");
+            out.println(" </body>");
+            out.println("</html>");
+            
         }
     }
 
