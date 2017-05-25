@@ -17,6 +17,7 @@
                 <jsp:include page="static/navLeft.jsp" />
                 <div class="col-lg-9" style="padding-left: 5%">
                     <form action="${pageContext.request.contextPath}/AgentController?action=update" method="POST">
+                        <legend>รายละเอียดข้อมูลส่วนตัว</legend>
                         <div class="form-group row">
                             <label for="username" class="col-2 col-form-label">ชื่อผู้ใช้</label>
                             <div class="col-lg-5">
@@ -41,8 +42,8 @@
                         </div>
                         <div class="form-group row">
                             <label for="idCard" class="col-3 col-form-label">เลขบัตรประจำตัวประชาชน</label>
-                            <div class="col-lg-5">
-                                <input type="hidden" name="idCard" value="{{ a.idcard}}" />
+                            <div class="col-lg-4">
+                                <input type="hidden" id="idCard" name="idCard" value="{{ a.idcard}}" />
                                 <input class="form-control" type="text" maxlength="13" placeholder="เลขบัตรประจำตัวประชาชน" value="{{ a.idcard}}" name="idCard" id="idCard" required="required" disabled="disabled">
                             </div>
                             <label for="nationality" class="col-1 col-form-label">สัญชาติ</label>
@@ -56,7 +57,7 @@
                                 <input type="date" id="birthday" name="birthday" placeholder="วันเกิด" value="{{ a.birthday}}" class="form-control" required="required">
                             </div>
                             <label for="gender" class="col-1 col-form-label">เพศ</label>
-                            <div class="col-3">
+                            <div class="col-2">
                                 <select id="gender" name="gender" class="form-control" required="required" ng-model="a.gender" >  
                                     <option value="หญิง">หญิง</option>
                                     <option value="ชาย">ชาย</option>
@@ -81,7 +82,7 @@
                                 <input type="date" name="expiredDate" id="expired_date"  class="form-control" value="{{ a.expiredDate}}" required="required">
                             </div>
                             <label for="degreeId" class="col-2 col-form-label">ระดับสมาชิก</label>
-                            <div class="col-3">
+                            <div class="col-2">
                                 <select name="degreeId" class="form-control" required="required" ng-model="a.degreeId">
                                     <option value="1">DI</option>
                                     <option value="2">VIP</option>
@@ -90,9 +91,8 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group row">
-                            
-                        </div>
+                        <hr>
+                        <legend>รายละเอียดที่อยู่</legend>
                         <div class="form-group row">
                             <label for="address" class="col-1 col-form-label">ที่อยู่</label>
                             <div class="col-7">
@@ -129,6 +129,8 @@
                                 <input type="text" value="{{ a.phonenumberReserve}}" id="phoneReserve" name="phoneReserve" placeholder="เบอร์โทรรอง" class="form-control" required="required">
                             </div>
                         </div>
+                        <hr>
+                        <legend>บุคคลที่เกี่ยวข้อง</legend>
                         <div class="form-group row">
                             <label for="relationship" class="col-3 col-form-label">บุคคลที่เกี่ยวข้อง</label>
                             <div class="col-3">

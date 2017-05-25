@@ -62,9 +62,9 @@ public class LoginController extends HttpServlet {
                 session.setAttribute("degreeName", degreeDao.getDegreeById(list.get(0).getDegreeId()).get(0).getDegreeName());
                 session.setAttribute("createBy", list.get(0).getAgentCode());             //add by agent code
                 session.setAttribute("username", username);
-                System.out.println(session.getAttribute("degreeId"));
-                System.out.println(session.getAttribute("degreeName"));
-                System.out.println(session.getAttribute("createBy"));
+                //System.out.println(session.getAttribute("degreeId"));
+                //System.out.println(session.getAttribute("degreeName"));
+                //System.out.println(session.getAttribute("createBy"));
                 json = gson.toJson("true");
             }else{
                 session.setAttribute("username", null);

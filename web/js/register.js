@@ -9,23 +9,29 @@ $(document).ready(function(){
     });
 
     $("form").submit(function(e){
+        e.preventDefault()
+        console.log($(this))
+        e.stopPropagation()
         var postData = $(this).serializeArray();
         var formURL = $(this).attr("action");
+        
         $.ajax({
             url : formURL,
             type: "POST",
-            dataType: "JSON",
             data : postData,
 
             success:function(data, textStatus, jqXHR){
                 toastr.success('รออนุมัติจากผู้ดูแลระบบ','ลงทะเบียนสำเร็จ !')
+                $('button[type="reset"]').trigger('click')
             },
             error: function(jqXHR, textStatus, errorThrown){
                 toastr.error('กรุณาติดต่อผู้ดูแลระบบ','ลงทะเบียนล้มเหลว !')
             }
         });
-        e.preventDefault(); //STOP default action
-        //e.unbind(); //unbind. to stop multiple form submit.
+        
+            
+        //$(this).removeAttr('action')
+        
     });
 
     $("#idCard").on("keyup", function(){

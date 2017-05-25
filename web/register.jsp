@@ -36,10 +36,10 @@
                                 <!-- Text input-->
                                 <div class="form-group">
                                     <div class="col-sm-4">
-                                        <input type="text" name="fistName" placeholder="ชื่อ" class="form-control" required="required">
+                                        <input type="text" name="fistName" placeholder="ชื่อ" class="form-control" required="required" >
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" name="lastName" placeholder="นามสกุล" class="form-control" required="required">
+                                        <input type="text" name="lastName" placeholder="นามสกุล" class="form-control" required="required" >
                                     </div>
                                     <div class="col-sm-4">
                                         <input type="number" id="idCard" name="idCard" maxlength="13" value="" placeholder="เลขประจำตัวประชาชน" class="form-control" required="required">
@@ -52,7 +52,7 @@
                                         <input type="date" name="birthday" placeholder="วันเกิด" class="form-control" required="required">
                                     </div>
                                     <div class="col-sm-3">
-                                        <input type="text" name="nationality" placeholder="สัญชาติ" class="form-control" required="required">
+                                        <input type="text" name="nationality" placeholder="สัญชาติ" class="form-control" required="required" >
                                     </div>
                                     <div class="col-sm-2">
                                         <select name="gender" class="form-control" required="required">
@@ -66,10 +66,10 @@
                                 <legend class="font-color">รหัส เลขประจำตัว วันหมดอายุ ของสมาชิก</legend>
                                 <div class="form-group">
                                     <div class="col-sm-4">
-                                        <input type="text" name="agentId" maxlength="16" placeholder="รหัสตัวแทน" class="form-control" required="required">
+                                        <input type="text" name="agentId" maxlength="16" placeholder="รหัสตัวแทน" class="form-control" required="required" >
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" name="agentCode"  placeholder="เลขประจำตัวของตัวแทน" class="form-control" required="required">
+                                        <input type="text" name="agentCode"  placeholder="เลขประจำตัวของตัวแทน" class="form-control" >
                                     </div>
                                     <div class="col-sm-4">
                                         <input type="date" name="expiredDate" id="expired_date"  class="form-control" required="required">
@@ -94,33 +94,33 @@
                                 <!-- Text input-->
                                 <div class="form-group">
                                     <div class="col-sm-10">
-                                        <input type="text" name="address"  placeholder="ที่อยู่" class="form-control" required="required">
+                                        <input type="text" name="address"  placeholder="ที่อยู่" class="form-control" required="required" >
                                     </div>
                                 </div>
                                 <!-- Text input-->
                                 <div  id="address" style="display:none;">
                                     <div class="form-group">
                                         <div class="col-sm-5">
-                                            <input type="text" name="district" placeholder="ตำบล" class="form-control" required="required">
+                                            <input type="text" name="district" placeholder="ตำบล" class="form-control" required="required" >
                                         </div>
                                         <div class="col-sm-5">
-                                            <input type="text" name="amphoe" placeholder="อำเภอ" class="form-control" required="required">
+                                            <input type="text" name="amphoe" placeholder="อำเภอ" class="form-control" required="required" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-5">
-                                            <input type="text" name="province" placeholder="จังหวัด" class="form-control" required="required">
+                                            <input type="text" name="province" placeholder="จังหวัด" class="form-control" required="required" >
                                         </div>
                                         <div class="col-sm-5">
-                                            <input type="text" name="zipcode" placeholder="รหัสไปรษณี" class="form-control" required="required">
+                                            <input type="text" name="zipcode" placeholder="รหัสไปรษณี" class="form-control" required="required" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-3">
-                                            <input type="text" name="phoneMain"  placeholder="เบอร์โทรหลัก" class="form-control" required="required">
+                                            <input type="text" name="phoneMain"  placeholder="เบอร์โทรหลัก" class="form-control" required="required" >
                                         </div>
                                         <div class="col-sm-3">
-                                            <input type="text" name="phoneReserve"  placeholder="เบอร์โทรรอง" class="form-control" required="required">
+                                            <input type="text" name="phoneReserve"  placeholder="เบอร์โทรรอง" class="form-control" required="required" >
                                         </div>
                                     </div>
                                 </div>
@@ -131,13 +131,13 @@
                                 <!-- Text input-->
                                 <div class="form-group">
                                     <div class="col-sm-4">
-                                        <input type="text" name="relationship"  placeholder="บุคคลที่เกี่ยวข้อง" class="form-control" required="required">
+                                        <input type="text" name="relationship"  placeholder="บุคคลที่เกี่ยวข้อง" class="form-control" required="required" >
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" name="relationshipRelatedpersons"  placeholder="ความสัมพันธ์" class="form-control"required="required">
+                                        <input type="text" name="relationshipRelatedpersons"  placeholder="ความสัมพันธ์" class="form-control"required="required" >
                                     </div>
                                     <div class="col-sm-4">
-                                        <input type="text" name="phonenumberRelatedpersons"  placeholder="เบอร์โทรของบุคคลที่เกี่ยวข้อง" class="form-control"required="required">
+                                        <input type="text" name="phonenumberRelatedpersons"  placeholder="เบอร์โทรของบุคคลที่เกี่ยวข้อง" class="form-control"required="required" >
                                     </div>
                                 </div>
 
@@ -170,7 +170,7 @@
             </div><!-- container -->
         </div>
 
-        <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="jquery.Thailand.js/dependencies/JQL.min.js"></script>
         <script type="text/javascript" src="jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>

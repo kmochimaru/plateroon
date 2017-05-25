@@ -33,7 +33,7 @@
             </form>
             <footer>
                     <a href="index.jsp">กลับเข้าสู่เว็บไซต์</a> &nbsp;&nbsp;&nbsp; 
-                    <c:if test="${username != null || username != ''}">
+                    <c:if test="${username != null}">
                         <a href="register.jsp">สมัครเป็นตัวแทนจำหน่าย</a>
                     </c:if>
             </footer>

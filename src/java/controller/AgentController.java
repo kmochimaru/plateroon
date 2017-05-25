@@ -73,12 +73,12 @@ public class AgentController extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         List <Agent> list = new ArrayList();
         String action = (String)request.getParameter("action")==null?"":(String)request.getParameter("action");
-        
+
         if(action.equals("add")){
             bean = new Agent();
             dao  = new AgentDaoImp();
             degreeDao = new DegreeDaoImp();
-            bean.setUsername(request.getParameter("agentId"));
+            bean.setUsername(degreeDao.getDegreeById(request.getParameter("degreeId")).get(0).getDegreeName().charAt(0)+request.getParameter("agentId"));
             bean.setPassword(MD5Hashing.encodeMD5(request.getParameter("idCard")));
             bean.setActive("N");
             bean.setFirstname(request.getParameter("fistName"));
