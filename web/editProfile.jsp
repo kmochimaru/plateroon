@@ -54,7 +54,7 @@
                         <div class="form-group row">
                             <label for="birthday" class="col-1 col-form-label">วันเกิด</label>
                             <div class="col-3">
-                                <input type="date" id="birthday" name="birthday" placeholder="วันเกิด" value="{{ a.birthday}}" class="form-control" required="required">
+                                <input type="date" id="birthday" name="birthday" placeholder="วันเกิด" value="{{ a.birthday }}" class="form-control" required="required">
                             </div>
                             <label for="gender" class="col-1 col-form-label">เพศ</label>
                             <div class="col-2">

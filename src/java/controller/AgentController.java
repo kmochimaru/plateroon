@@ -179,7 +179,12 @@ public class AgentController extends HttpServlet {
         }else if(action.equals("searchAgent")){
             dao = new AgentDaoImp();
             list = dao.searchAgent(amphoe, province);
-            request.getSession().setAttribute("search", list);
+            request.getSession().setAttribute("searchSize", list.size());
+            if(list.size() > 0)
+                request.getSession().setAttribute("search", list);
+            else
+                request.getSession().setAttribute("search", null);
+            
             PrintWriter out = response.getWriter();
             out.println("<!DOCTYPE HTML>");
             out.println("<html>");

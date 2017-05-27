@@ -15,22 +15,20 @@
 
             })
 
-            .controller('agentController', function ($scope, $http, $localStorage) {
+            .controller('agentController', function ($scope, $http, $localStorage, $filter) {
                 $http.post("../AgentController?action=activeY")
                         .then(function (response) {
-                            console.log(response.data)
                             $scope.agent = response.data
                             $scope.sizeAgent = response.data.length
                             $scope.notify = $localStorage.notify
-
-                            $scope.range = function (min, max, step) {
-                                step = step || 1;
-                                var input = [];
-                                for (var i = min; i <= max; i += step) {
-                                    input.push(i);
+                            var today = $filter('date')(new Date(),'yyyy-MM-dd');
+                            $scope.chkExpiredDate = function(expiredDate){
+                                if(today > expiredDate){
+                                    return false
+                                }else{ 
+                                    return true
                                 }
-                                return input;
-                            };
+                            }
                         })
 
                 $scope.editAgent = function editAgent() {

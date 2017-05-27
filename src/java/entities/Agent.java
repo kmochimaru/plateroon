@@ -1,5 +1,5 @@
 package entities;
-// Generated May 13, 2017 8:24:58 PM by Hibernate Tools 4.3.1
+// Generated May 27, 2017 3:01:42 PM by Hibernate Tools 4.3.1
 
 
 
@@ -9,8 +9,8 @@ package entities;
 public class Agent  implements java.io.Serializable {
 
 
-     private String agentId;
      private String agentCode;
+     private String agentId;
      private String idcard;
      private String firstname;
      private String lastnames;
@@ -32,17 +32,19 @@ public class Agent  implements java.io.Serializable {
      private String password;
      private String username;
      private String active;
+     private String path;
+     private String createByDegree;
 
     public Agent() {
     }
 
 	
-    public Agent(String agentId) {
-        this.agentId = agentId;
+    public Agent(String agentCode) {
+        this.agentCode = agentCode;
     }
-    public Agent(String agentId, String agentCode, String idcard, String firstname, String lastnames, String birthday, String address, String phonenumberMain, String phonenumberReserve, String gender, String nationality, String relatedpersons, String relationshipRelatedpersons, String phonenumberRelatedpersons, String expiredDate, String degreeId, String province, String amphur, String district, String zipcode, String password, String username, String active) {
-       this.agentId = agentId;
+    public Agent(String agentCode, String agentId, String idcard, String firstname, String lastnames, String birthday, String address, String phonenumberMain, String phonenumberReserve, String gender, String nationality, String relatedpersons, String relationshipRelatedpersons, String phonenumberRelatedpersons, String expiredDate, String degreeId, String province, String amphur, String district, String zipcode, String password, String username, String active, String path, String createByDegree) {
        this.agentCode = agentCode;
+       this.agentId = agentId;
        this.idcard = idcard;
        this.firstname = firstname;
        this.lastnames = lastnames;
@@ -64,21 +66,23 @@ public class Agent  implements java.io.Serializable {
        this.password = password;
        this.username = username;
        this.active = active;
+       this.path = path;
+       this.createByDegree = createByDegree;
     }
    
-    public String getAgentId() {
-        return this.agentId;
-    }
-    
-    public void setAgentId(String agentId) {
-        this.agentId = agentId;
-    }
     public String getAgentCode() {
         return this.agentCode;
     }
     
     public void setAgentCode(String agentCode) {
         this.agentCode = agentCode;
+    }
+    public String getAgentId() {
+        return this.agentId;
+    }
+    
+    public void setAgentId(String agentId) {
+        this.agentId = agentId;
     }
     public String getIdcard() {
         return this.idcard;
@@ -226,6 +230,20 @@ public class Agent  implements java.io.Serializable {
     
     public void setActive(String active) {
         this.active = active;
+    }
+    public String getPath() {
+        return this.path;
+    }
+    
+    public void setPath(String path) {
+        this.path = path;
+    }
+    public String getCreateByDegree() {
+        return this.createByDegree;
+    }
+    
+    public void setCreateByDegree(String createByDegree) {
+        this.createByDegree = createByDegree;
     }
 
 

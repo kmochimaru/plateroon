@@ -30,6 +30,7 @@
                         <h3>ตัวแทนจำหน่ายทั้งหมด &nbsp; {{ sizeAgent}} &nbsp; คน</h3>
                         <table class="table table-hover col-lg-9">
                             <thead>
+                            <th>สถานะตัวแทน</th>
                             <th width="20%">รหัสตัวแทน</th>
                             <th width="20%">เลขประจำตัวของตัวแทน</th>
                             <th width="20%">ชื่อ-นามสกุล</th>
@@ -39,7 +40,10 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="(key, a) in agent" >
-
+                                    <td align="center">
+                                        <i style="color: green" class="fa fa-check-circle-o fa-2x" aria-hidden="true" ng-if="chkExpiredDate(a.expiredDate) == true"></i>
+                                        <i style="color: red" class="fa fa-window-close-o fa-2x" aria-hidden="true" ng-if="chkExpiredDate(a.expiredDate) == false"></i>
+                                    </td>
                                     <td>
                                         {{ a.agentId}}
                                     </td>
