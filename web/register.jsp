@@ -66,7 +66,7 @@
                                 <legend class="font-color">รหัส เลขประจำตัว วันหมดอายุ ของสมาชิก</legend>
                                 <div class="form-group">
                                     <div class="col-sm-4">
-                                        <input type="text" name="agentId" maxlength="16" placeholder="รหัสตัวแทน" class="form-control" required="required" >
+                                        <input type="text" name="agentId" maxlength="4" placeholder="รหัสตัวแทน" class="form-control" required="required" >
                                     </div>
                                     <div class="col-sm-4">
                                         <input type="text" name="agentCode"  placeholder="เลขประจำตัวของตัวแทน" class="form-control" >

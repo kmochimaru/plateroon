@@ -30,6 +30,7 @@
                         <c:if test="${username != null}">
                             <a class="dropdown-item" href="logout.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;ออกระบบ</a>
                             <a class="dropdown-item" href="editProfile.jsp"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;แก้ไขข้อมูลส่วนตัว</a>
+                            <a class="dropdown-item" href="manageMember.jsp"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;จัดการสมาชิก</a>
                             <a class="dropdown-item" href="register.jsp"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;ลงทะเบียน</a>
                         </c:if>
                     </div>

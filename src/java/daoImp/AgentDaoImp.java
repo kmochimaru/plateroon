@@ -334,5 +334,28 @@ public class AgentDaoImp implements AgentDao{
         }
         return list;
     }
+
+    @Override
+    public List<Agent> getMemberByAgentCode(String agentId) {
+        System.out.println(agentId);
+        Transaction transaction = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Agent> list = new ArrayList();
+        try{
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("FROM Agent WHERE agentCode LIKE '%"+agentId+"%' AND agentId <> '"+agentId+"'");
+            list = query.list();
+            transaction.commit();
+        }catch(RuntimeException e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            System.out.println("RuntimeException getMemberByAgentCode ====>  "+e);
+        }finally{
+            session.flush();
+            session.close();
+        }
+        return list;
+    }
     
 }

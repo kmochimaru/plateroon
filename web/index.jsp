@@ -8,6 +8,8 @@
     </head>
 
     <body>
+        <c:remove var="search" scope="session" />
+        <c:remove var="searchSize" scope="session" />
         <jsp:include page="static/navTop.jsp" />
         <!-- Page Content -->
         <div></div>

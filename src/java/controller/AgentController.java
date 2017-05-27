@@ -55,6 +55,7 @@ public class AgentController extends HttpServlet {
             dao  = new AgentDaoImp();
             bean.setAgentId(request.getParameter("agentId"));
             dao.delAgent(bean);
+            response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             out.println("<!DOCTYPE HTML>");
             out.println("<html>");
@@ -161,6 +162,7 @@ public class AgentController extends HttpServlet {
             bean.setRelationshipRelatedpersons(request.getParameter("relationshipRelatedpersons"));
             bean.setPhonenumberRelatedpersons(request.getParameter("phonenumberRelatedpersons"));
             dao.updateAgent(bean);
+            response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             out.println("<!DOCTYPE HTML>");
             out.println("<html>");
@@ -183,8 +185,8 @@ public class AgentController extends HttpServlet {
             if(list.size() > 0)
                 request.getSession().setAttribute("search", list);
             else
-                request.getSession().setAttribute("search", null);
-            
+                request.getSession().setAttribute("search", false);
+            response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             out.println("<!DOCTYPE HTML>");
             out.println("<html>");
@@ -192,6 +194,13 @@ public class AgentController extends HttpServlet {
             out.println(" <script>window.location.replace(document.referrer)</script>");
             out.println(" </body>");
             out.println("</html>");
+            
+        }else if(action.equals("member")){
+            dao = new AgentDaoImp();
+            list = dao.getMemberByAgentCode(request.getSession().getAttribute("agentId").toString());
+            json = gson.toJson(list);
+            response.setContentType("application/json");
+            response.getWriter().write(json);
             
         }
     }

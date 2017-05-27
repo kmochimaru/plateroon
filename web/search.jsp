@@ -53,29 +53,31 @@
                             </div>
                         </form>
                     </div>
-                    <c:if test="${searchSize <= 0}">
+                    <c:if test="${searchSize == 0 && search == false}">
                         <h3 style="color: red; margin-top: 15%">ไม่พบตัวแทนจำหน่าย</h3>
                     </c:if>
-                    <c:forEach items="${search}" var="bean">
-                        <div class="row col-lg-9" id="card" style="margin-top: 20px;">
-                            <div class="col-lg-4">
-                                <img src="http://placehold.it/380x500" alt="" class="img-thumbnail" />
-                            </div>
+                    <c:if test="${searchSize > 0}">
+                          <c:forEach items="${search}" var="bean">
+                            <div class="row col-lg-9" id="card" style="margin-top: 20px;">
+                                <div class="col-lg-4">
+                                    <img src="http://placehold.it/380x500" alt="" class="img-thumbnail" />
+                                </div>
 
-                            <div class="col-lg-7" style="padding-top: 8%; text-aling: center;">
-                                <h4>${ bean.agentCode }</h4>
-                                <small><cite title="location">ต.${ bean.district }&nbsp; อ.${ bean.amphur } จ.${bean.province} 
-                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
-                                    </cite></small>
-                                <p>
-                                    <i class="fa fa-id-badge" aria-hidden="true"></i> &nbsp; ${ bean.firstname } &nbsp; ${ bean.lastnames }
-                                    <br />
-                                    <i class="fa fa-phone" aria-hidden="true"></i> &nbsp; ${ bean.phonenumberMain }, ${ bean.phonenumberReserve }
-                                    <br />
-                                    <i class="glyphicon glyphicon-gift"></i>
+                                <div class="col-lg-7" style="padding-top: 8%; text-aling: center;">
+                                    <h4>${ bean.agentCode }</h4>
+                                    <small><cite title="location">ต.${ bean.district }&nbsp; อ.${ bean.amphur } จ.${bean.province} 
+                                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                        </cite></small>
+                                    <p>
+                                        <i class="fa fa-id-badge" aria-hidden="true"></i> &nbsp; ${ bean.firstname } &nbsp; ${ bean.lastnames }
+                                        <br />
+                                        <i class="fa fa-phone" aria-hidden="true"></i> &nbsp; ${ bean.phonenumberMain }, ${ bean.phonenumberReserve }
+                                        <br />
+                                        <i class="glyphicon glyphicon-gift"></i>
+                                </div>
                             </div>
-                        </div>
-                    </c:forEach>
+                        </c:forEach>
+                    </c:if>
                 </div>
                 <!-- /.col-lg-9 -->
 
