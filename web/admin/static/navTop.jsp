@@ -13,7 +13,7 @@
                         ${username}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="member">
-                        <a class="dropdown-item" href="../logout.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;ออกระบบ</a>
+                        <a class="dropdown-item" href="../logout.jsp"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;ออกระบบ</a>
                         <a class="dropdown-item" href="../register.jsp"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;ลงทะเบียน</a>
                     </div>
                 </li>

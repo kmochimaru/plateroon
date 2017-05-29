@@ -145,9 +145,10 @@
                                 <br>
                                 <div class="form-group">
                                     <div class="col-sm-4" align="left">
-                                        <a href="index.jsp" align="left" >
+                                        <c:if test="${username == 'ผู้ดูแลระบบ'}"><a href="admin/dashboard.jsp" align="left" ></c:if>
+                                        <c:if test="${username != 'ผู้ดูแลระบบ'}"><a href="index.jsp" align="left" ></c:if>
                                             <button type="button" class="btn btn-default btn-sm">
-                                                <i class="fa fa-chevron-circle-left" aria-hidden="true">&nbsp;ไปยังเว็บไซต์</i>
+                                                <i class="fa fa-chevron-circle-left" aria-hidden="true">&nbsp;กลับหน้าหลัก</i>
                                             </button>
                                         </a>
                                     </div>

@@ -55,8 +55,8 @@
                                         {{ a.phonenumberMain}}, {{ a.phonenumberReserve}}
                                     </td>
                                     <td>
-                                        <a style="color: green;" href="${pageContext.request.contextPath}/AgentController?action=Approve&agentId={{ a.agentId}}"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
-                                        <a style="color: red;" href="${pageContext.request.contextPath}/AgentController?action=Disapproved&agentId={{ a.agentId}}"><i class="fa fa-close fa-2x" aria-hidden="true"></i></a>
+                                        <a style="color: green;" href="${pageContext.request.contextPath}/AgentController?action=Approve&agentCode={{ a.agentCode}}"><i class="fa fa-check fa-2x" aria-hidden="true"></i></a>
+                                        <a style="color: red;" href="${pageContext.request.contextPath}/AgentController?action=Disapproved&agentCode={{ a.agentCode}}"><i class="fa fa-close fa-2x" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                             </tbody>

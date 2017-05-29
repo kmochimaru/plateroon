@@ -18,18 +18,8 @@
                 <div class="col-lg-9" style="padding-left: 5%">
                     <form action="${pageContext.request.contextPath}/AgentController?action=update" method="POST">
                         <legend>รายละเอียดข้อมูลส่วนตัว</legend>
-                        <div class="form-group row">
-                            <label for="username" class="col-2 col-form-label">ชื่อผู้ใช้</label>
-                            <div class="col-lg-5">
-                                <input class="form-control" type="text" placeholder="ชื่อผู้ใช้" value="{{ a.username}}" name="username" id="username" required="required">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label for="password" class="col-2 col-form-label">รหัสผู้ใช้</label>
-                            <div class="col-lg-5">
-                                <input class="form-control" type="password" placeholder="รหัสผู้ใช้" value="{{ a.password}}" name="password" id="password" required="required">
-                            </div>
-                        </div>
+                        <input class="form-control" type="hidden" value="{{ a.username}}" name="username" id="username" >
+                        <input class="form-control" type="hidden"  value="{{ a.password}}" name="password" id="password" >
                         <div class="form-group row">
                             <label for="fistName" class="col-1 col-form-label">ชื่อ</label>
                             <div class="col-lg-4">
@@ -146,9 +136,11 @@
                             <div class="col-3">
                                 <input type="text" value="{{ a.phonenumberRelatedpersons}}" id="phonenumberRelatedpersons" name="phonenumberRelatedpersons" placeholder="เบอร์โทรของบุคคลที่เกี่ยวข้อง" class="form-control" required="required">
                             </div>
+                        </div><br>
+                        <div align="center">
+                            <button type="submit" class="btn btn-outline-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> แก้ไข</button> &nbsp;&nbsp;
+                            <input type="reset" class="btn btn-outline-danger" value="ล้างข้อมูล" />
                         </div>
-                            <input type="submit" class="btn btn-outline-success" value="แก้ไข" /> &nbsp;&nbsp;
-                            <input type="reset" class="btn btn-outline-danger" value="ยกเลิก" />
                     </form>
                 </div>
                 <!-- /.col-lg-9 -->

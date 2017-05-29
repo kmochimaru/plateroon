@@ -8,7 +8,7 @@
     </head>
     <body>
         <%
-            session.invalidate();
+            request.getSession().invalidate();
         %>
         <jsp:forward page="index.jsp" />
     </body>

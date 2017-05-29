@@ -213,14 +213,13 @@ public class AgentDaoImp implements AgentDao{
     }
 
     @Override
-    public void updateApprove(String agent_id) {
+    public void updateApprove(String agentCode) {
         Transaction transaction = null; 
         Session session = HibernateUtil.getSessionFactory().openSession();
-        List<Agent> list = new ArrayList();
         try{
             transaction = session.beginTransaction();
-            Query query = session.createQuery("UPDATE Agent SET active = 'Y' WHERE agentId = :agentId");
-            query.setParameter("agentId", agent_id);
+            Query query = session.createQuery("UPDATE Agent a SET a.active = 'Y' WHERE a.agentCode = :agentCode");
+            query.setParameter("agentCode", agentCode);
             int result = query.executeUpdate();
             transaction.commit();
         }catch(RuntimeException e){
@@ -337,13 +336,12 @@ public class AgentDaoImp implements AgentDao{
 
     @Override
     public List<Agent> getMemberByAgentCode(String agentId) {
-        System.out.println(agentId);
         Transaction transaction = null; 
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<Agent> list = new ArrayList();
         try{
             transaction = session.beginTransaction();
-            Query query = session.createQuery("FROM Agent WHERE agentCode LIKE '%"+agentId+"%' AND agentId <> '"+agentId+"'");
+            Query query = session.createQuery("FROM Agent WHERE agentCode LIKE '%"+agentId+"%' AND agentId <> '"+agentId+"' AND active = 'Y'");
             list = query.list();
             transaction.commit();
         }catch(RuntimeException e){
@@ -356,6 +354,56 @@ public class AgentDaoImp implements AgentDao{
             session.close();
         }
         return list;
+    }
+
+    @Override
+    public void updateUsernamePass(String username, String password, String agentCode) {
+        Transaction transaction = null; 
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try{
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("UPDATE Agent SET username = :username, password = :password WHERE agentCode = :agentCode ");
+            query.setParameter("username", username);
+            query.setParameter("password", password);
+            query.setParameter("agentCode", agentCode);
+            int result = query.executeUpdate();
+            transaction.commit();
+        }catch(RuntimeException e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            System.out.println("RuntimeException updateUsernamePass ====>  "+e);
+        }finally{
+            session.flush();
+            session.close();
+        }
+    }
+
+    @Override
+    public List<Agent> isValidAgentCode(String agentCode) {
+        //boolean valid = false;
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Agent> list = new ArrayList();
+        try{
+            transaction = session.beginTransaction();
+            String hql = "FROM Agent WHERE agentCode = :agentCode";
+            Query query = session.createQuery(hql);
+            query.setParameter("agentCode", agentCode);
+            list = query.list();
+            //valid = query.list().size()==1?true:false;
+            transaction.commit();
+        }catch(RuntimeException e){
+            if(transaction != null){
+                transaction.rollback();
+            }
+            System.out.println("RuntimeException isValidAgentCode ====>  "+e);
+        }finally{
+            session.flush();
+            session.close();
+        }
+        return list.size()>0?list:null;
+        //return valid;
     }
     
 }

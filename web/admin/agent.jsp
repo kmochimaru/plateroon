@@ -214,7 +214,7 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <a style="color: red;" href="${pageContext.request.contextPath}/AgentController?action=Disapproved&agentId={{ a.agentId}}"><i class="fa fa-remove fa-2x" aria-hidden="true"></i></a>
+                                        <a style="color: red;" href="${pageContext.request.contextPath}/AgentController?action=Disapproved&agentCode={{ a.agentCode}}"><i class="fa fa-remove fa-2x" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                             </tbody>

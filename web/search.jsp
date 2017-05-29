@@ -36,7 +36,7 @@
             <div class="row" id="content" >
                 <jsp:include page="static/navLeft.jsp" />
                 <div class="col-lg-9" align="center">
-                    <h1>ค้นหาตัวแทน</h1><br>
+                    <h1>ค้นหาตัวแทนตามโซน</h1><br>
                     <div class="col-lg-9 row">
                         <form class="form-group row" action="${pageContext.request.contextPath}/AgentController?action=searchAgent" method="POST">
                             <label class="col-lg-4" for="">อำเภอ</label>
@@ -49,7 +49,7 @@
                             </div>
                             <div class="col-lg-4 top_space"></div>
                             <div align="left" class="col-lg-5 top_space">
-                                <input type="submit" class="btn btn-outline-info" value="ค้นหา" />
+                                <button type="submit" class="btn btn-outline-info btn-md"><i class="fa fa-search" aria-hidden="true"></i>&nbsp;ค้นหา</button>
                             </div>
                         </form>
                     </div>

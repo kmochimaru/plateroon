@@ -10,16 +10,17 @@
         <div class="collapse navbar-collapse" id="navbarExample">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="index.jsp">หน้าแรก <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="index.jsp"><i class="fa fa-home" aria-hidden="true"></i> หน้าแรก <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="about.jsp">เกี่ยวกับ</a>
+                    <a class="nav-link" href="about.jsp"><i class="fa fa-book" aria-hidden="true"></i> เกี่ยวกับ</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.jsp">ติดต่อเรา</a>
+                    <a class="nav-link" href="contact.jsp"><i class="fa fa-envelope" aria-hidden="true"></i> ติดต่อเรา</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="" id="member" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-user-circle" aria-hidden="true"></i>
                         <c:if test="${username == null}">สมาชิก</c:if>
                         <c:if test="${username != null}">${username}</c:if>
                         </a>
@@ -28,8 +29,9 @@
                             <a class="dropdown-item" href="login.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;เข้าสู่ระบบ</a>
                         </c:if>
                         <c:if test="${username != null}">
-                            <a class="dropdown-item" href="logout.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;ออกระบบ</a>
+                            <a class="dropdown-item" href="logout.jsp"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;ออกระบบ</a>
                             <a class="dropdown-item" href="editProfile.jsp"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;แก้ไขข้อมูลส่วนตัว</a>
+                            <a class="dropdown-item" href="manageUsers.jsp"><i class="fa fa-key" aria-hidden="true"></i>&nbsp;เปลี่ยนชื่อและรหัสผู้ใช้</a>
                             <a class="dropdown-item" href="manageMember.jsp"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;จัดการสมาชิก</a>
                             <a class="dropdown-item" href="register.jsp"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;ลงทะเบียน</a>
                         </c:if>

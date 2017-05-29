@@ -21,9 +21,11 @@ public interface AgentDao {
     public List<Agent> getAgentByUsername(String username);
     public List<Agent> getMemberByAgentCode(String agentId);
     public void updateAgent(Agent agent);
-    public void updateApprove(String agent_id);
+    public void updateApprove(String agentCode);
+    public void updateUsernamePass(String username, String password, String agentCode);
     public void delAgent(Agent agent);
     public boolean isValidLogin(String username, String password);
+    public List<Agent> isValidAgentCode(String agentCode);
     public void updatePassword(String pass, String agentId);
     public boolean isValidIdCard(String idcard);
     public boolean isValidAgentId(String agent_id);
