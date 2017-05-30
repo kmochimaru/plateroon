@@ -23,7 +23,7 @@
                             $scope.notify = $localStorage.notify
                             var today = $filter('date')(new Date(),'yyyy-MM-dd');
                             $scope.chkExpiredDate = function(expiredDate){
-                                if(today > expiredDate){
+                                if(today > expiredDate || today == expiredDate){
                                     return false
                                 }else{ 
                                     return true

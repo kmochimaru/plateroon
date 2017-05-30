@@ -30,13 +30,16 @@ $(document).ready(function(){
         
     });
 
-    $("#idCard").on("keyup", function(){
+    
+    $("#idCard").bind("change paste keyup input", function(){
         
         if($("#idCard").val().length == 13){
             checkIdCard($("#idCard").val())
         }
         
     })
+    
+    
 
     function checkIdCard(idcard){
         var input = $("#idCard")

@@ -15,7 +15,7 @@
                             $scope.sizeAgent = response.data.length
                             var today = $filter('date')(new Date(), 'yyyy-MM-dd');
                             $scope.chkExpiredDate = function (expiredDate) {
-                                if (today > expiredDate) {
+                                if (today > expiredDate || today == expiredDate) {
                                     return false
                                 } else {
                                     return true
@@ -45,7 +45,9 @@
                 }
             })
 
-            .controller('checkAgentCode', function ($scope) {
+            .controller('checkAgentCode', function ($scope, $http) {
+                $scope.hello = "hello"
+                var agent;
                 var working = false;
                 $('form').on('submit', function (e) {
                     e.preventDefault();
@@ -64,9 +66,31 @@
                         type: "GET",
 
                         success: function (data, textStatus, jqXHR) {
-                            
-                            if (data == true) {
+                            if (data.length == 1) {
+                                data = data[0]
+                                //clear element and set modal body
+                                $(".modal-body").empty()
+                                $("#label").empty()
+                                $("#label").append(`รหัสตัวแทนจำหน่าย&nbsp;${data.agentId}`)
+                                var body = `<div class="col-lg-4">
+                                                <img src="http://placehold.it/380x500" class="img-thumbnail" />
+                                            </div><br>
+                                            <div class="col-lg-7" style="text-aling: center;">
+                                                <h4>${data.agentCode}</h4>
+                                                <small><cite title="location">ต.${data.district} &nbsp; อ.${data.amphur} จ.${data.province} 
+                                                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                    </cite></small>
+                                                <p>
+                                                    <i class="fa fa-id-badge" aria-hidden="true"></i> &nbsp; ${data.firstname} &nbsp; ${data.lastnames} 
+                                                    <br />
+                                                    <i class="fa fa-phone" aria-hidden="true"></i> &nbsp; ${data.phonenumberMain} , ${data.phonenumberReserve} 
+                                                    <br />
+                                                    <i class="glyphicon glyphicon-gift"></i>
+                                            </div>`
+                                $(".modal-body").append(body)
+                                
                                 setTimeout(function () {
+
                                     $this.addClass('ok');
                                     $state.html('สมบูรณ์');
                                     setTimeout(function () {
@@ -74,9 +98,9 @@
                                         $this.removeClass('ok loading');
                                         working = false;
                                     }, 2000);
+                                    $('#checkAgent').modal('show')
                                 }, 2000);
                             } else if (data == false) {
-                                
                                 setTimeout(function () {
                                     //$(".spinner").remove()
                                     $this.addClass('not-ok');
@@ -89,8 +113,7 @@
                                         working = false;
                                     }, 3000);
                                 }, 2000);
-                            }else if (data == "หมดอายุ") {
-                                
+                            } else if (data == "expire") {
                                 setTimeout(function () {
                                     //$(".spinner").remove()
                                     $this.addClass('not-ok');
@@ -105,7 +128,7 @@
                                 }, 2000);
                             }
                             $('#agentCode').focus()         //debug cursor spinner
-                            
+
                         },
                         error: function (jqXHR, textStatus, errorThrown, data) {
                             console.log(errorThrown)

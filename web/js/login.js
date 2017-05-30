@@ -28,7 +28,7 @@ $('.login').on('submit', function (e) {
                         working = false;
                         window.location = "admin/dashboard.jsp"
                     }, 2000);
-                }, 3000);
+                }, 2000);
                 
             }else if(data == "true"){
                 
@@ -41,13 +41,14 @@ $('.login').on('submit', function (e) {
                         working = false;
                         window.location = "index.jsp"
                     }, 2000);
-                }, 3000);
+                }, 2000);
                 
             }else if(data == "false"){
                 $this.removeClass('ok loading');
                 $state.html('เข้าสู่ระบบ');
                 toastr.warning('กรุณตรวจสอบชื่อผู้ใช้หรือรหัสผ่าน','เข้าระบบไม่สำเร็จ !')
             }
+            $('#username').focus()         //debug cursor spinner
         },
         error: function(jqXHR, textStatus, errorThrown, data){
             toastr.warning('กรุณแจ้งผู้ดูแลระบบ','เข้าระบบล้มเหลว')

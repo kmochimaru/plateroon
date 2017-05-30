@@ -21,7 +21,7 @@
         <div class="wrapper">
             <form class="login" action="${pageContext.request.contextPath}/LoginController" method="POST">
                 <p class="title">เข้าสู่ระบบ</p>
-                <input type="text" name="username" placeholder="ชื่อผู้ใช้" autofocus required="required"/>
+                <input type="text" id="username" name="username" placeholder="ชื่อผู้ใช้" autofocus required="required"/>
                 <i class="fa fa-user"></i>
                 <input type="password" name="password"  placeholder="รหัสผ่าน" required="required"/>
                 <i class="fa fa-key"></i>
@@ -32,7 +32,9 @@
                 </button>
             </form>
             <footer>
-                    <a href="index.jsp">กลับเข้าสู่เว็บไซต์</a> &nbsp;&nbsp;&nbsp; 
+                    <c:if test="${username == 'ผู้ดูแลระบบ'}"><a href="admin/dashboard.jsp" align="left" >กลับสู่หน้าหลัก</a></c:if>
+                    <c:if test="${username != 'ผู้ดูแลระบบ'}"><a href="index.jsp" align="left" >กลับสู่หน้าหลัก</a></c:if>
+                    &nbsp;&nbsp;&nbsp; 
                     <c:if test="${username != null}">
                         <a href="register.jsp">สมัครเป็นตัวแทนจำหน่าย</a>
                     </c:if>

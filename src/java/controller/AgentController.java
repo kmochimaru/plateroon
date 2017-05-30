@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -54,6 +55,7 @@ public class AgentController extends HttpServlet {
             out.println(" <script>window.location.replace(document.referrer)</script>");
             out.println(" </body>");
             out.println("</html>");
+            
         }else if(action.equals("Disapproved")){
             bean = new Agent();
             dao  = new AgentDaoImp();
@@ -67,38 +69,55 @@ public class AgentController extends HttpServlet {
             out.println(" <script>window.location.replace(document.referrer)</script>");
             out.println(" </body>");
             out.println("</html>");
+            
         }else if(action.equals("checkAgent")){
+            //request.getSession().removeAttribute("checkAgent");
             boolean valid = false;
+            String agentCode = request.getParameter("agentCode");
             dao = new AgentDaoImp();
             List<Agent> list = new ArrayList();
-            list = dao.isValidAgentCode(request.getParameter("agentCode"));
+            list = dao.isValidAgentCode(agentCode);
             if(list == null){
                 json = gson.toJson(false);
             }else{
-                int year =0, month=0, day=0;
+                int year =0;
                 String DATE = "";
                 try{
+                    /*
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     SimpleDateFormat sdf2 = new SimpleDateFormat("MM-dd");
              
                     //convert พ.ศ. to ค.ศ.
                     Date date = new Date();
                     Calendar c = Calendar.getInstance();
-                    year = c.get(Calendar.YEAR)-543;
+                    //year = c.get(Calendar.YEAR)-543;    //พ.ศ.
+                    year = c.get(Calendar.YEAR);        //ค.ศ.  server  ใช้ ค.ศ.
                     DATE = year+"-"+String.valueOf(sdf2.format(date));
                     
                     //formate type date compare 
                     Date date1 = sdf.parse(list.get(0).getExpiredDate());
                     sdf.format(date1);
                     Date date2 = sdf.parse(DATE);
+                    sdf.format(date2); */
+                    
+                    Locale lc = new Locale("en","EN");
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", lc);
+             
+                    //formate type date compare 
+                    Date date1 = sdf.parse(list.get(0).getExpiredDate());
+                    sdf.format(date1);
+                    Date date2 = new Date();
                     sdf.format(date2);
                     
+                    //request.getSession().setAttribute("DATE", sdf.format(date2));  //debug date
+                    //List<Agent> checkAgent = new ArrayList();
+                    //checkAgent = dao.getAgentByAgentCode(agentCode);
+                
+                    
                     if (date1.compareTo(date2) > 0) {
-                        json = gson.toJson(true);
-                    } else if (date1.compareTo(date2) < 0) {
-                        json = gson.toJson("หมดอายุ");
-                    } else if (date1.compareTo(date2) == 0) {
-                        json = gson.toJson("หมดอายุ");
+                        json = gson.toJson(list); 
+                    } else if (date1.compareTo(date2) < 0 || date1.compareTo(date2) == 0) {
+                        json = gson.toJson("expire");
                     } else {
                         System.out.println("How to get here?");
                     }
@@ -263,7 +282,6 @@ public class AgentController extends HttpServlet {
             out.println("<!DOCTYPE HTML>");
             out.println("<html>");
             out.println(" <body>");
-            //out.println(" <script>window.location.replace(document.referrer)</script>");
             out.println(" <script>window.location.href='login.jsp'</script>");
             out.println(" </body>");
             out.println("</html>");

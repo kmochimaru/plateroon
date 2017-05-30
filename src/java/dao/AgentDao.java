@@ -20,6 +20,7 @@ public interface AgentDao {
     public List<Agent> getAgentById(String id);
     public List<Agent> getAgentByUsername(String username);
     public List<Agent> getMemberByAgentCode(String agentId);
+    public List<Agent> getAgentByAgentCode(String agentCode);
     public void updateAgent(Agent agent);
     public void updateApprove(String agentCode);
     public void updateUsernamePass(String username, String password, String agentCode);

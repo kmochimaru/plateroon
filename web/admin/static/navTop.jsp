@@ -5,7 +5,7 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="container">
-        <a class="navbar-brand" href="dashboard.jsp" style="margin-left: 30px;"><h3 id="nav-text">Plateroon Co.,LTD.</h3></a>
+        <a class="navbar-brand" href="dashboard.jsp" style="margin-left: 30px;"><h3 id="nav-text">PLATEROON Co.,LTD.</h3></a>
         <div class="collapse navbar-collapse" id="navbarExample">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
