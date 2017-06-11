@@ -1,0 +1,38 @@
+@media print{
+    
+    #printAgentCard{
+        margin-left: 100px;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+.image {
+    position: relative;
+    margin-bottom: 20px;
+    color: black;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 550px;
+    height: 550px;
+    font-size: 20px;
+}
+
+.div-left{
+    margin-top: 22px;
+    margin-left: 106px;
+}
+
+h5{
+    text-align: left;
+    margin-bottom: 22px;
+}
+h6{
+    text-align: left;
+    margin-left: 10px;
+    margin-bottom: 30px;
+}
+
+img{
+    margin-left: 46px;
+    margin-top: 36%;
+}

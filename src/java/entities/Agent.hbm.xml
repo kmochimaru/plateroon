@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated May 29, 2017 12:16:55 AM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jun 11, 2017 9:28:43 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="entities.Agent" table="agent" catalog="agent" optimistic-lock="version">
         <id name="agentCode" type="string">
@@ -74,11 +74,20 @@
         <property name="active" type="string">
             <column name="active" length="1" />
         </property>
-        <property name="path" type="string">
-            <column name="path" length="200" />
+        <property name="imgPath" type="string">
+            <column name="img_path" length="200" />
         </property>
-        <property name="createByDegree" type="string">
-            <column name="create_by_degree" length="45" />
+        <property name="imgName" type="string">
+            <column name="img_name" length="200" />
+        </property>
+        <property name="facebook" type="string">
+            <column name="facebook" length="100" />
+        </property>
+        <property name="line" type="string">
+            <column name="line" length="100" />
+        </property>
+        <property name="instagram" type="string">
+            <column name="instagram" length="100" />
         </property>
     </class>
 </hibernate-mapping>

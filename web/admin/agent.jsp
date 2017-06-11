@@ -5,6 +5,7 @@
 
     <head>
         <jsp:include page="static/tag_head.jsp" />
+        <link href="${pageContext.request.contextPath}/admin/css/angular-confirm.css">
         <style>
             th,td{
                 font-size: 14px;
@@ -19,7 +20,10 @@
     </head>
 
     <body>
-        <c:if test="${username != null}">
+        <c:if test="${username == null || username != 'ผู้ดูแลระบบ'}">
+            <a href="${pageContext.request.contextPath}/login.jsp" style="text-align: center;"><h1>กรุณา Login เข้าสู่ระบบ admin</h1></a>
+        </c:if>
+        <c:if test="${username != null && username == 'ผู้ดูแลระบบ'}">
             <jsp:include page="static/navTop.jsp" />
             <!-- Page Content -->
             <div></div>
@@ -39,6 +43,7 @@
                             <th width="10%">แก้ไข/ลบ</th>
                             </thead>
                             <tbody>
+                                <a class="del" href="http://www.google.com">google.com</a>
                                 <tr ng-repeat="(key, a) in agent" >
                                     <td align="center">
                                         <i style="color: green" class="fa fa-check-circle-o fa-2x" aria-hidden="true" ng-if="chkExpiredDate(a.expiredDate) == true"></i>
@@ -75,6 +80,8 @@
                                                         <div class="modal-body">
                                                             <input type="hidden" name="password" value="{{ a.password}}" />
                                                             <input type="hidden" name="username" value="{{ a.username}}" />
+                                                            <input type="hidden" name="imgPath" value="{{ a.imgPath}}" />
+                                                            <input type="hidden" name="imgName" value="{{ a.imgName}}" />
                                                             <div class="form-group row">
                                                                 <label for="fistName" class="col-2 col-form-label">ชื่อ</label>
                                                                 <div class="col-10">
@@ -204,6 +211,24 @@
                                                                     <input type="text" value="{{ a.phonenumberRelatedpersons}}" id="phonenumberRelatedpersons" name="phonenumberRelatedpersons" placeholder="เบอร์โทรของบุคคลที่เกี่ยวข้อง" class="form-control" required="required">
                                                                 </div>
                                                             </div>
+                                                            <div class="form-group row">
+                                                                <label for="facebook" class="col-2 col-form-label">facebook</label>
+                                                                <div class="col-10">
+                                                                    <input type="text" value="{{ a.facebook}}" id="facebook" name="facebook" placeholder="facebook" class="form-control" required="required">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="line" class="col-2 col-form-label">line</label>
+                                                                <div class="col-10">
+                                                                    <input type="text" value="{{ a.line}}" id="line" name="line" placeholder="line" class="form-control" required="required">
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                <label for="instagram" class="col-2 col-form-label">instagram</label>
+                                                                <div class="col-10">
+                                                                    <input type="text" value="{{ a.instagram}}" id="instagram" name="instagram" placeholder="instagram" class="form-control" required="required">
+                                                                </div>
+                                                            </div>
 
                                                         </div>
                                                         <div class="modal-footer">
@@ -214,7 +239,8 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <a style="color: red;" href="${pageContext.request.contextPath}/AgentController?action=Disapproved&agentCode={{ a.agentCode}}"><i class="fa fa-remove fa-2x" aria-hidden="true"></i></a>
+                                        <a class="del" href="http://www.google.com">google.com</a>
+                                        <a class="del" style="color: red;" href="${pageContext.request.contextPath}/AgentController?action=Disapproved&agentCode={{ a.agentCode}}"><i class="fa fa-remove fa-2x" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                             </tbody>

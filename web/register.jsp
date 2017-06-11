@@ -16,6 +16,9 @@
         <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
     </head>
     <body>
+        <c:if test="${username == null}">
+            <jsp:forward page="login.jsp"/>
+        </c:if>
         <% 
             DegreeDaoImp dao = new DegreeDaoImp();
             request.getSession().setAttribute("allDegree", dao.getAllDegree());
@@ -68,14 +71,12 @@
                                     <div class="col-sm-4">
                                         <input type="text" name="agentId" maxlength="4" placeholder="รหัสตัวแทน" class="form-control" required="required" >
                                     </div>
-                                    <div class="col-sm-4">
+                                    <!--div class="col-sm-4">
                                         <input type="text" name="agentCode"  placeholder="เลขประจำตัวของตัวแทน" class="form-control" >
-                                    </div>
+                                    </div-->
                                     <div class="col-sm-4">
                                         <input type="date" name="expiredDate" id="expired_date"  class="form-control" required="required">
                                     </div>
-                                </div>
-                                <div class="form-group">
                                     <div class="col-sm-2">
                                         <select name="degreeId" class="form-control" required="required">
                                             <option value="" selected disabled>ระดับ</option>
@@ -121,6 +122,17 @@
                                         </div>
                                         <div class="col-sm-3">
                                             <input type="text" name="phoneReserve"  placeholder="เบอร์โทรรอง" class="form-control" required="required" >
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-3">
+                                            <input type="text" name="facebook"  placeholder="facebook" class="form-control" required="required" >
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" name="line"  placeholder="line" class="form-control" required="required" >
+                                        </div>
+                                        <div class="col-sm-3">
+                                            <input type="text" name="instagram"  placeholder="instagram" class="form-control" required="required" >
                                         </div>
                                     </div>
                                 </div>

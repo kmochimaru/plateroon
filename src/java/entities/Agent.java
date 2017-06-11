@@ -1,5 +1,5 @@
 package entities;
-// Generated May 29, 2017 12:16:54 AM by Hibernate Tools 4.3.1
+// Generated Jun 11, 2017 9:28:42 PM by Hibernate Tools 4.3.1
 
 
 
@@ -32,8 +32,11 @@ public class Agent  implements java.io.Serializable {
      private String password;
      private String username;
      private String active;
-     private String path;
-     private String createByDegree;
+     private String imgPath;
+     private String imgName;
+     private String facebook;
+     private String line;
+     private String instagram;
 
     public Agent() {
     }
@@ -42,7 +45,7 @@ public class Agent  implements java.io.Serializable {
     public Agent(String agentCode) {
         this.agentCode = agentCode;
     }
-    public Agent(String agentCode, String agentId, String idcard, String firstname, String lastnames, String birthday, String address, String phonenumberMain, String phonenumberReserve, String gender, String nationality, String relatedpersons, String relationshipRelatedpersons, String phonenumberRelatedpersons, String expiredDate, String degreeId, String province, String amphur, String district, String zipcode, String password, String username, String active, String path, String createByDegree) {
+    public Agent(String agentCode, String agentId, String idcard, String firstname, String lastnames, String birthday, String address, String phonenumberMain, String phonenumberReserve, String gender, String nationality, String relatedpersons, String relationshipRelatedpersons, String phonenumberRelatedpersons, String expiredDate, String degreeId, String province, String amphur, String district, String zipcode, String password, String username, String active, String imgPath, String imgName, String facebook, String line, String instagram) {
        this.agentCode = agentCode;
        this.agentId = agentId;
        this.idcard = idcard;
@@ -66,8 +69,11 @@ public class Agent  implements java.io.Serializable {
        this.password = password;
        this.username = username;
        this.active = active;
-       this.path = path;
-       this.createByDegree = createByDegree;
+       this.imgPath = imgPath;
+       this.imgName = imgName;
+       this.facebook = facebook;
+       this.line = line;
+       this.instagram = instagram;
     }
    
     public String getAgentCode() {
@@ -231,19 +237,40 @@ public class Agent  implements java.io.Serializable {
     public void setActive(String active) {
         this.active = active;
     }
-    public String getPath() {
-        return this.path;
+    public String getImgPath() {
+        return this.imgPath;
     }
     
-    public void setPath(String path) {
-        this.path = path;
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
-    public String getCreateByDegree() {
-        return this.createByDegree;
+    public String getImgName() {
+        return this.imgName;
     }
     
-    public void setCreateByDegree(String createByDegree) {
-        this.createByDegree = createByDegree;
+    public void setImgName(String imgName) {
+        this.imgName = imgName;
+    }
+    public String getFacebook() {
+        return this.facebook;
+    }
+    
+    public void setFacebook(String facebook) {
+        this.facebook = facebook;
+    }
+    public String getLine() {
+        return this.line;
+    }
+    
+    public void setLine(String line) {
+        this.line = line;
+    }
+    public String getInstagram() {
+        return this.instagram;
+    }
+    
+    public void setInstagram(String instagram) {
+        this.instagram = instagram;
     }
 
 

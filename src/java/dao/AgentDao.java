@@ -24,6 +24,7 @@ public interface AgentDao {
     public void updateAgent(Agent agent);
     public void updateApprove(String agentCode);
     public void updateUsernamePass(String username, String password, String agentCode);
+    public void updateImg(String path, String name, String agentCode);
     public void delAgent(Agent agent);
     public boolean isValidLogin(String username, String password);
     public List<Agent> isValidAgentCode(String agentCode);

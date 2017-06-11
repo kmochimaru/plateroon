@@ -177,6 +177,11 @@ public class AgentController extends HttpServlet {
             bean.setRelatedpersons(request.getParameter("relationship"));
             bean.setRelationshipRelatedpersons(request.getParameter("relationshipRelatedpersons"));
             bean.setPhonenumberRelatedpersons(request.getParameter("phonenumberRelatedpersons"));
+            bean.setFacebook(request.getParameter("facebook"));
+            bean.setLine(request.getParameter("line"));
+            bean.setInstagram(request.getParameter("instagram"));
+            bean.setImgPath("-");
+            bean.setImgName("-");
             dao.addAgent(bean);
             response.setContentType("text/html");
             response.setStatus(HttpServletResponse.SC_OK);
@@ -228,6 +233,11 @@ public class AgentController extends HttpServlet {
             bean.setRelatedpersons(request.getParameter("relationship"));
             bean.setRelationshipRelatedpersons(request.getParameter("relationshipRelatedpersons"));
             bean.setPhonenumberRelatedpersons(request.getParameter("phonenumberRelatedpersons"));
+            bean.setFacebook(request.getParameter("facebook"));
+            bean.setLine(request.getParameter("line"));
+            bean.setInstagram(request.getParameter("instagram"));
+            bean.setImgPath(request.getParameter("imgPath"));
+            bean.setImgName(request.getParameter("imgName"));
             dao.updateAgent(bean);
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
@@ -285,6 +295,12 @@ public class AgentController extends HttpServlet {
             out.println(" <script>window.location.href='login.jsp'</script>");
             out.println(" </body>");
             out.println("</html>");
+        }else if(action.equals("updateImg")){
+            dao = new AgentDaoImp();
+            dao.updateImg(request.getParameter("imgPath"), request.getParameter("imgName"), request.getParameter("agentCode"));
+            json = gson.toJson("success");
+            response.setContentType("application/json");
+            response.getWriter().write(json);
         }
     }
 

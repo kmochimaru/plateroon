@@ -184,7 +184,8 @@ public class AgentDaoImp implements AgentDao {
             }
             System.out.println("RuntimeException isValidIdCard ====>  " + e);
         } finally {
-
+            session.flush();
+            session.close();
         }
         return valid;
     }
@@ -207,7 +208,8 @@ public class AgentDaoImp implements AgentDao {
             }
             System.out.println("RuntimeException isValidAgentId ====>  " + e);
         } finally {
-
+            session.flush();
+            session.close();
         }
         return valid;
     }
@@ -428,6 +430,29 @@ public class AgentDaoImp implements AgentDao {
             session.close();
         }
         return list;
+    }
+
+    @Override
+    public void updateImg(String path, String name, String agentCode) {
+        Transaction transaction = null;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("UPDATE Agent SET imgPath = :path, imgName = :name WHERE agentCode = :agentCode");
+            query.setParameter("path", path);
+            query.setParameter("name", name);
+            query.setParameter("agentCode", agentCode);
+            int result = query.executeUpdate();
+            transaction.commit();
+        } catch (RuntimeException e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println("RuntimeException updateImg ====>  " + e);
+        } finally {
+            session.flush();
+            session.close();
+        }
     }
 
 }

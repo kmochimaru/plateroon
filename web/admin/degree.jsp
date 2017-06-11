@@ -19,7 +19,10 @@
     </head>
 
     <body>
-        <c:if test="${username != null}">
+        <c:if test="${username == null || username != 'ผู้ดูแลระบบ'}">
+            <a href="${pageContext.request.contextPath}/login.jsp" style="text-align: center;"><h1>กรุณา Login เข้าสู่ระบบ admin</h1></a>
+        </c:if>
+        <c:if test="${username != null && username == 'ผู้ดูแลระบบ'}">
             <jsp:include page="static/navTop.jsp" />
             <!-- Page Content -->
             <div></div>

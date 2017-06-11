@@ -28,12 +28,18 @@
                         <c:if test="${username == null}">
                             <a class="dropdown-item" href="login.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;เข้าสู่ระบบ</a>
                         </c:if>
-                        <c:if test="${username != null}">
+                        <c:if test="${username != null && username != 'ผู้ดูแลระบบ' }">
                             <a class="dropdown-item" href="logout.jsp"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;ออกระบบ</a>
                             <a class="dropdown-item" href="editProfile.jsp"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;แก้ไขข้อมูลส่วนตัว</a>
+                            <a class="dropdown-item" href="agentCard.jsp"><i class="fa fa-id-card-o" aria-hidden="true"></i>&nbsp;ออกบัตรตัวแทนจำหน่าย</a>
                             <a class="dropdown-item" href="manageUsers.jsp"><i class="fa fa-key" aria-hidden="true"></i>&nbsp;เปลี่ยนชื่อและรหัสผู้ใช้</a>
                             <a class="dropdown-item" href="manageMember.jsp"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;จัดการสมาชิก</a>
                             <a class="dropdown-item" href="register.jsp"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;ลงทะเบียน</a>
+                        </c:if>
+                        <c:if test="${username == 'ผู้ดูแลระบบ'}">
+                            <a class="dropdown-item" href="logout.jsp"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;ออกระบบ</a>
+                            <a class="dropdown-item" href="register.jsp"><i class="fa fa-address-card" aria-hidden="true"></i>&nbsp;ลงทะเบียน</a>
+                            <a class="dropdown-item" href="admin/dashboard.jsp"><i class="fa fa-users" aria-hidden="true"></i>&nbsp;จัดการข้อมูล</a>
                         </c:if>
                     </div>
                 </li>

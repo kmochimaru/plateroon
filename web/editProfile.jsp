@@ -6,16 +6,48 @@
     <head>
         <jsp:include page="static/tag_head.jsp" />
         <link rel="stylesheet" href="./jquery.Thailand.js/jquery.Thailand.min.css">
+        <link rel="stylesheet" href="css/upload.css">
     </head>
 
     <body>
         <jsp:include page="static/navTop.jsp" />
+        <c:if test="${username == null}">
+            <jsp:forward page="login.jsp"/>
+        </c:if>
         <!-- Page Content -->
         <div class="container" ng-app="profile" ng-controller="mainController">
 
             <div class="row" id="content">
                 <jsp:include page="static/navLeft.jsp" />
                 <div class="col-lg-9" style="padding-left: 5%">
+                    <!--div class="file-upload">
+                        <form method="post" action="${pageContext.request.contextPath}/UploadImageController" enctype="multipart/form-data">
+                            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger('click')">เพิ่มรูปภาพ</button>
+
+                            <div class="image-upload-wrap">
+                                <input class="file-upload-input" type='file' name="file" id="file" onchange="readURL(this);" accept="image/*" />
+                                <div class="drag-text">
+                                    <h3>ลากและวางไฟล์ หรือ คลิกเพิ่มรูปภาพ</h3>
+                                </div>
+                            </div>
+                            <div class="file-upload-content">
+                                <img class="file-upload-image" src="#" alt="your image" />
+                                <div class="image-title-wrap">
+                                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                                </div>
+                            </div>
+                            <br><input class="btn" id="uploader" type="submit" value="อัพโหลด" disabled/>
+                        </form>
+                    </div-->
+
+                    <div class="card">
+                        <img src="{{ a.imgPath }}" id="img-preview" />
+                        <label class="file-upload-container" for="file-upload">
+                            <input id="file-upload" type="file" style="display:none;">
+                            เลือกรูปภาพ
+                        </label>
+                    </div>
+
                     <form action="${pageContext.request.contextPath}/AgentController?action=update" method="POST">
                         <legend>รายละเอียดข้อมูลส่วนตัว</legend>
                         <input class="form-control" type="hidden" value="{{ a.username}}" name="username" id="username" >
@@ -44,7 +76,7 @@
                         <div class="form-group row">
                             <label for="birthday" class="col-1 col-form-label">วันเกิด</label>
                             <div class="col-3">
-                                <input type="date" id="birthday" name="birthday" placeholder="วันเกิด" value="{{ a.birthday }}" class="form-control" required="required">
+                                <input type="date" id="birthday" name="birthday" placeholder="วันเกิด" value="{{ a.birthday}}" class="form-control" required="required">
                             </div>
                             <label for="gender" class="col-1 col-form-label">เพศ</label>
                             <div class="col-2">
@@ -119,6 +151,22 @@
                                 <input type="text" value="{{ a.phonenumberReserve}}" id="phoneReserve" name="phoneReserve" placeholder="เบอร์โทรรอง" class="form-control" required="required">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="facebook" class="col-2 col-form-label">facebook</label>
+                            <div class="col-4">
+                                <input type="text" name="facebook" placeholder="facebook" class="form-control" value="{{ a.facebook}}" required="required">
+                            </div>
+                            <label for="line" class="col-1 col-form-label">line</label>
+                            <div class="col-3">
+                                <input type="text" name="line" placeholder="line"  class="form-control" value="{{ a.line}}" required="required">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="instagram" class="col-2 col-form-label">instagram</label>
+                            <div class="col-4">
+                                <input type="text" name="instagram" placeholder="instagram" class="form-control" value="{{ a.instagram}}" required="required">
+                            </div>
+                        </div>
                         <hr>
                         <legend>บุคคลที่เกี่ยวข้อง</legend>
                         <div class="form-group row">
@@ -152,20 +200,67 @@
         <!-- /.container -->
         <jsp:include page="static/footer.jsp" />
         <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js'></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="js/editProfile.js"></script>
+        <script src="js/upload.js"></script>
         <script type="text/javascript" src="jquery.Thailand.js/dependencies/JQL.min.js"></script>
         <script type="text/javascript" src="jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
         <script type="text/javascript" src="jquery.Thailand.js/jquery.Thailand.min.js"></script>
         <script>
-                                $(document).ready(function () {
-                                    //Load address
-                                    $.Thailand({
-                                        database: 'jquery.Thailand.js/data3.json',
-                                        onComplete: function () {
-                                            $('#loader, #address').toggle();
-                                        }
-                                    });
-                                })
+                                    $(document).ready(function () {
+                                        //Load address
+                                        $.Thailand({
+                                            database: 'jquery.Thailand.js/data3.json',
+                                            onComplete: function () {
+                                                $('#loader, #address').toggle();
+                                            }
+                                        });
+                                    })
+
+                                    var CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/jirayu/upload'
+                                    var CLOUDINARY_DEL = 'https://api.cloudinary.com/v1_1/jirayu/imgage/upload?public_id=pbb5yas8mhekwjqot2zn'
+                                    var CLOUDINARY_UPLOAD_PRESET = 'gcv0j4za'
+                                    var imgPreview = document.getElementById('img-preview')
+                                    var fileUpload = document.getElementById('file-upload')
+
+                                    fileUpload.addEventListener('change', function (event) {
+                                        var file = event.target.files[0]
+                                        var formData = new FormData()
+                                        formData.append('file', file)
+                                        formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET)
+                                        axios({
+                                            url: CLOUDINARY_URL,
+                                            method: 'POST',
+                                            header: {
+                                                'Content-Type': 'application/x-www-form-urlencoded'
+                                            },
+                                            data: formData
+                                        }).then(function (res) {
+                                            console.log(res)
+                                            console.log(res.data.public_id)
+                                            imgPreview.src = res.data.secure_url
+                                            
+                                            $.ajax({
+                                                url: "AgentController?action=updateImg",
+                                                type: "POST",
+                                                data: {imgPath:res.data.secure_url,
+                                                       imgName:res.data.public_id,
+                                                       agentCode:$('#agentCode').val()},
+
+                                                success: function (data, textStatus, jqXHR) {
+                                                    toastr.success('', 'อัพโหลดสำเร็จ !')
+                                                    $('button[type="reset"]').trigger('click')
+                                                },
+                                                error: function (jqXHR, textStatus, errorThrown) {
+                                                    toastr.error('', 'อัพโหลดล้มเหลว !')
+                                                }
+                                            });
+
+                                        }).catch(function (err) {
+                                            console.log(err)
+                                        })
+
+                                    })
         </script>
     </body>
 

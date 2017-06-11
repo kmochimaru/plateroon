@@ -21,8 +21,11 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-<script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js'></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/admin/js/angular-confirm.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/admin/js/jconfirmaction.jquery.js"></script>
 <script src="${pageContext.request.contextPath}/admin/js/dashboard.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery.Thailand.js/dependencies/JQL.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>

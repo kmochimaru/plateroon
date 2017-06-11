@@ -5,6 +5,16 @@
                 $http.post("AgentController?action=readByUsername")
                         .then(function (response) {
                             $scope.a = response.data[0]
+                            if (response.data[0].degreeId == 1){
+                                $scope.url = 'url("agentCard/DL.jpg")'
+                            }else if (response.data[0].degreeId == 2){
+                                $scope.url = 'url("agentCard/VIP.jpg")'
+                            }else if (response.data[0].degreeId == 3){
+                                $scope.url = 'url("agentCard/MAIN.jpg")'
+                            }else if (response.data[0].degreeId == 4){
+                                $scope.url = 'url("agentCard/SUB.jpg")'
+                            }
+                            
                         })
             })
 
@@ -88,7 +98,7 @@
                                                     <i class="glyphicon glyphicon-gift"></i>
                                             </div>`
                                 $(".modal-body").append(body)
-                                
+
                                 setTimeout(function () {
 
                                     $this.addClass('ok');

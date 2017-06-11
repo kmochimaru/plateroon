@@ -5,36 +5,37 @@
 
     <head>
         <jsp:include page="static/tag_head.jsp" />
+        <link href="css/checkAgent.css" rel="stylesheet">
     </head>
 
     <body>
         <jsp:include page="static/navTop.jsp" />
+        <c:if test="${username == null}">
+            <jsp:forward page="login.jsp"/>
+        </c:if>
         <!-- Page Content -->
         <div class="container" ng-app="profile" ng-controller="mainController">
 
             <div class="row" id="content">
                 <jsp:include page="static/navLeft.jsp" />
                 <div class="col-lg-9" style="padding-left: 5%">
-                    <form action="${pageContext.request.contextPath}/AgentController?action=change" method="POST">
-                        <h2 align="center">เปลี่ยนชื่อและรหัสผู้ใช้</h2><br>
-                        <input name="agentCode" type="hidden" value="{{ a.agentCode }}">
-                        <div class="form-group row" >
-                            <label for="username" class="col-2 col-form-label">ชื่อผู้ใช้</label>
-                            <div class="col-lg-5">
-                                <input class="form-control" type="text" placeholder="ชื่อผู้ใช้" value="{{ a.username}}" name="username" id="username" required="required">
-                            </div>
+                    <div>
+                        <div class="wrapper">
+                            <form class="login" action="${pageContext.request.contextPath}/AgentController?action=change" method="POST">
+                                <input name="agentCode" type="hidden" value="{{ a.agentCode}}">
+                                <p class="title" align="center">เปลี่ยนชื่อและรหัสของผู้ใช้</p>
+                                <input type="text" id="username" name="username" value="{{a.username}}" placeholder="ชื่อผู้ใช้" autofocus required="required"/>
+                                <i class="fa fa-user"></i>
+                                <input type="password" name="password" value="{{ a.password}}"  placeholder="รหัสผ่าน" required="required"/>
+                                <i class="fa fa-key"></i>
+                                <button type="submit">
+                                    <i cl ass="spinner"></i>
+                                    <div class="fail"></div>
+                                    <span class="state" style="font-family: 'Prompt', sans-serif;">ตกลง</span>
+                                </button>
+                            </form>
                         </div>
-                        <div class="form-group row">
-                            <label for="password" class="col-2 col-form-label">รหัสผู้ใช้</label>
-                            <div class="col-lg-5">
-                                <input class="form-control" type="password" placeholder="รหัสผู้ใช้" value="{{ a.password}}" name="password" id="password" required="required">
-                            </div>
-                        </div>
-                        <div align="center">
-                            <button type="submit" class="btn btn-outline-success"><i class="fa fa-floppy-o" aria-hidden="true"></i> แก้ไข</button> &nbsp;&nbsp;
-                            <input type="reset" class="btn btn-outline-danger" value="ล้างข้อมูล" />
-                        </div>
-                    </form>
+                    </div>
                 </div>
                 <!-- /.col-lg-9 -->
 
