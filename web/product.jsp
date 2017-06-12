@@ -17,7 +17,10 @@
                 <jsp:include page="static/navLeft.jsp" />
                 <div class="col-lg-9">
 
-                    <h1 style="color: red; text-align: center; margin-top: 100px">กำลังอยู่ในช่วงปรับปรุง</h1>
+                    <div class="img-space-top" align="center"> 
+                        <img class="img-zoom"  src="img/production1.jpg" width="350" height="350" >&nbsp;&nbsp;&nbsp;&nbsp;
+                        <img class="img-zoom"  src="img/production2.jpg" width="350" height="350" >
+                    </div>
 
                 </div>
                 <!-- /.col-lg-9 -->

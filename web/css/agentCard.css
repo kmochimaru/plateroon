@@ -6,7 +6,7 @@
     }
 }
 
-.image {
+#printAgentCard {
     position: relative;
     margin-bottom: 20px;
     color: black;
@@ -32,7 +32,7 @@ h6{
     margin-bottom: 30px;
 }
 
-img{
+#img-profile{
     margin-left: 46px;
     margin-top: 36%;
 }

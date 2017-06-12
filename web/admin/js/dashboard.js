@@ -12,35 +12,6 @@
                         if ($scope.sizeAgent > 0)
                         toastr.info("ทั้งหมด " + $scope.sizeAgent + " รายการ", 'มีรายชื่อยังไม่ได้อนุมัติ')
                 })
-
-                $scope.test = function(){
-                $scope.name = 'Sia: cheap thrills';
-                        $ngConfirm({
-                        title: 'Confirm!',
-                                content: '<strong>{{name}}</strong> is my favourite song',
-                                scope: $scope,
-                                buttons: {
-                                sayBoo: {
-                                text: 'Say Booo',
-                                        btnClass: 'btn-blue',
-                                        action: function(scope, button){
-                                        scope.name = 'Booo!!';
-                                                return false; // prevent close;
-                                        }
-                                },
-                                        somethingElse: {
-                                        text: 'Something else',
-                                                btnClass: 'btn-orange',
-                                                action: function(scope, button){
-                                                $ngConfirm('You clicked on something else');
-                                                }
-                                        }
-                                close: function(scope, button){
-                                // closes the modal
-                                },
-                                }
-                        });
-                }
         })
 
         .controller('agentController', function ($scope, $http, $localStorage, $filter) {

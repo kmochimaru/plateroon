@@ -83,7 +83,7 @@
                                 $("#label").empty()
                                 $("#label").append(`รหัสตัวแทนจำหน่าย&nbsp;${data.agentId}`)
                                 var body = `<div class="col-lg-4">
-                                                <img src="http://placehold.it/380x500" class="img-thumbnail" />
+                                                <img src="${data.imgPath}" class="img-thumbnail" />
                                             </div><br>
                                             <div class="col-lg-7" style="text-aling: center;">
                                                 <h4>${data.agentCode}</h4>

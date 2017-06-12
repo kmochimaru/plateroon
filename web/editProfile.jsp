@@ -20,38 +20,21 @@
             <div class="row" id="content">
                 <jsp:include page="static/navLeft.jsp" />
                 <div class="col-lg-9" style="padding-left: 5%">
-                    <!--div class="file-upload">
-                        <form method="post" action="${pageContext.request.contextPath}/UploadImageController" enctype="multipart/form-data">
-                            <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger('click')">เพิ่มรูปภาพ</button>
-
-                            <div class="image-upload-wrap">
-                                <input class="file-upload-input" type='file' name="file" id="file" onchange="readURL(this);" accept="image/*" />
-                                <div class="drag-text">
-                                    <h3>ลากและวางไฟล์ หรือ คลิกเพิ่มรูปภาพ</h3>
-                                </div>
-                            </div>
-                            <div class="file-upload-content">
-                                <img class="file-upload-image" src="#" alt="your image" />
-                                <div class="image-title-wrap">
-                                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-                                </div>
-                            </div>
-                            <br><input class="btn" id="uploader" type="submit" value="อัพโหลด" disabled/>
-                        </form>
-                    </div-->
 
                     <div class="card">
-                        <img src="{{ a.imgPath }}" id="img-preview" />
+                        <img src="{{ a.imgPath}}" id="img-preview" width="250" height="250" />
                         <label class="file-upload-container" for="file-upload">
-                            <input id="file-upload" type="file" style="display:none;">
+                            <input id="file-upload" type="file" accept="image/*" style="display:none;">
                             เลือกรูปภาพ
                         </label>
                     </div>
 
                     <form action="${pageContext.request.contextPath}/AgentController?action=update" method="POST">
                         <legend>รายละเอียดข้อมูลส่วนตัว</legend>
-                        <input class="form-control" type="hidden" value="{{ a.username}}" name="username" id="username" >
-                        <input class="form-control" type="hidden"  value="{{ a.password}}" name="password" id="password" >
+                        <input type="hidden" value="{{ a.username}}" name="username" id="username" >
+                        <input type="hidden"  value="{{ a.password}}" name="password" id="password" >
+                        <input type="hidden" value="{{ a.imgPath }}" name="imgPath" id="imgPath" >
+                        <input type="hidden" value="{{ a.imgName }}" name="imgName" id="imgName" >
                         <div class="form-group row">
                             <label for="fistName" class="col-1 col-form-label">ชื่อ</label>
                             <div class="col-lg-4">
@@ -195,14 +178,30 @@
 
             </div>
             <!-- /.row -->
-
+            <!-- Modal -->
+            <div class="modal fade" id="uploading" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">กำลังอัพโหลดรูปภาพกรุณารอสักครู่..</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- /.container -->
         <jsp:include page="static/footer.jsp" />
         <script src='http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js'></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="js/editProfile.js"></script>
-        <script src="js/upload.js"></script>
         <script type="text/javascript" src="jquery.Thailand.js/dependencies/JQL.min.js"></script>
         <script type="text/javascript" src="jquery.Thailand.js/dependencies/typeahead.bundle.js"></script>
         <script type="text/javascript" src="jquery.Thailand.js/jquery.Thailand.min.js"></script>
@@ -224,6 +223,8 @@
                                     var fileUpload = document.getElementById('file-upload')
 
                                     fileUpload.addEventListener('change', function (event) {
+                                        //$('#myModal').data('bs.modal').options.keyboard = true;
+                                        $('#uploading').modal('show')
                                         var file = event.target.files[0]
                                         var formData = new FormData()
                                         formData.append('file', file)
@@ -236,20 +237,23 @@
                                             },
                                             data: formData
                                         }).then(function (res) {
-                                            console.log(res)
-                                            console.log(res.data.public_id)
-                                            imgPreview.src = res.data.secure_url
-                                            
+                                            //console.log(res)
+                                            //console.log(res.data.public_id)
+                                            //imgPreview.src = res.data.secure_url
+
                                             $.ajax({
                                                 url: "AgentController?action=updateImg",
                                                 type: "POST",
-                                                data: {imgPath:res.data.secure_url,
-                                                       imgName:res.data.public_id,
-                                                       agentCode:$('#agentCode').val()},
-
+                                                data: {imgPath: res.data.secure_url,
+                                                    imgName: res.data.public_id,
+                                                    agentCode: $('#agentCode').val()},
                                                 success: function (data, textStatus, jqXHR) {
+                                                    $('#progress').modal('hide')
                                                     toastr.success('', 'อัพโหลดสำเร็จ !')
-                                                    $('button[type="reset"]').trigger('click')
+                                                    setTimeout(function () {
+                                                        location.reload()
+                                                    }, 1500)
+                                                    
                                                 },
                                                 error: function (jqXHR, textStatus, errorThrown) {
                                                     toastr.error('', 'อัพโหลดล้มเหลว !')

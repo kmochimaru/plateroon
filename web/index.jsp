@@ -47,8 +47,8 @@
                     </div>
 
                     <div class="img-space-top">
-                        <img class="img-zoom" src="img/Advertisement Banner_170216_0002.jpg" width="400" height="400">&nbsp;&nbsp;&nbsp;
-                        <img class="img-zoom" src="img/Advertisement Banner_170216_0001.jpg" width="400" height="400">
+                        <img class="img-zoom" src="img/home1.jpg" width="400" height="400">&nbsp;&nbsp;&nbsp;
+                        <img class="img-zoom" src="img/home2.jpg" width="400" height="400">
                     </div>
                 </div>
                 <!-- /.col-lg-9 -->

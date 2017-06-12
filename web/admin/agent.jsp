@@ -43,7 +43,6 @@
                             <th width="10%">แก้ไข/ลบ</th>
                             </thead>
                             <tbody>
-                                <a class="del" href="http://www.google.com">google.com</a>
                                 <tr ng-repeat="(key, a) in agent" >
                                     <td align="center">
                                         <i style="color: green" class="fa fa-check-circle-o fa-2x" aria-hidden="true" ng-if="chkExpiredDate(a.expiredDate) == true"></i>
@@ -239,7 +238,6 @@
                                                 </form>
                                             </div>
                                         </div>
-                                        <a class="del" href="http://www.google.com">google.com</a>
                                         <a class="del" style="color: red;" href="${pageContext.request.contextPath}/AgentController?action=Disapproved&agentCode={{ a.agentCode}}"><i class="fa fa-remove fa-2x" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>

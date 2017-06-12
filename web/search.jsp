@@ -60,7 +60,7 @@
                           <c:forEach items="${search}" var="bean">
                             <div class="row col-lg-9" id="card" style="margin-top: 20px;">
                                 <div class="col-lg-4">
-                                    <img src="http://placehold.it/380x500" alt="" class="img-thumbnail" />
+                                    <img src="${bean.imgPath}" alt="" class="img-thumbnail" />
                                 </div>
 
                                 <div class="col-lg-7" style="padding-top: 8%; text-aling: center;">

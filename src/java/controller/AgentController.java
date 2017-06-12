@@ -132,13 +132,19 @@ public class AgentController extends HttpServlet {
             response.getWriter().write(json); 
         }
     }
-
+    
+    private final String malePath = "https://res.cloudinary.com/jirayu/image/upload/v1497255860/ctztpx7wrrggi0tyr6xw.jpg";
+    private final String maleName = "ctztpx7wrrggi0tyr6xw";
+    private final String femalePath = "https://res.cloudinary.com/jirayu/image/upload/v1497255815/rvguqdru9pn1z0uujyu5.jpg";
+    private final String femaleName = "rvguqdru9pn1z0uujyu5";
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
+        
         List <Agent> list = new ArrayList();
         String action = (String)request.getParameter("action")==null?"":(String)request.getParameter("action");
         String amphoe =  request.getParameter("amphoe")==null?"":request.getParameter("amphoe");
@@ -180,8 +186,15 @@ public class AgentController extends HttpServlet {
             bean.setFacebook(request.getParameter("facebook"));
             bean.setLine(request.getParameter("line"));
             bean.setInstagram(request.getParameter("instagram"));
-            bean.setImgPath("-");
-            bean.setImgName("-");
+            
+            if(bean.getGender().equals("ชาย")){
+                bean.setImgPath(malePath);
+                bean.setImgName(maleName);
+            }else if(bean.getGender().equals("หญิง")){
+                bean.setImgPath(femalePath);
+                bean.setImgName(femaleName);
+            }
+            
             dao.addAgent(bean);
             response.setContentType("text/html");
             response.setStatus(HttpServletResponse.SC_OK);

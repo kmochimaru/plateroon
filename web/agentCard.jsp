@@ -22,16 +22,19 @@
                 <div class="col-lg-9" align="center">
 
                     <!--img src="agentCard/DL.jpg" width="600" height="500" -->
-                    <div class="row image a" id="printAgentCard" align="center" 
+                    <div class="row" id="printAgentCard" align="center" 
                          style="background-image:{{ url }}">
                         <div class="col-7" align="left">
-                            <img src="{{ a.imgPath }}" width="194" height="264">
+                            <img id="img-profile" src="{{ a.imgPath }}" width="194" height="264">
 
                             <div class="form-group">
                                 <h5 class="div-left">{{ a.agentId}}</h5>
                             </div>
-                            <div class="form-group">
-                                <h5 class="div-left">{{ field_of_work}}</h5>
+                            <div class="form-group" ng-show="field_of_work.text">
+                                <h5 class="div-left" style="padding-left: 5px;">{{ field_of_work.text }}</h5>
+                            </div>
+                            <div class="form-group" ng-show="!field_of_work.text">
+                                <h5 class="div-left" style="padding-left: 55px;">-</h5>
                             </div>
                         </div>
                         <div class="col-5">
@@ -58,8 +61,11 @@
                             <div class="form-group">
                                 <h6>{{a.agentCode}}</h6>
                             </div>
-                            <div class="form-group">
-                                <h6>{{ pick_up_from}}</h6>
+                            <div class="form-group" ng-show="pick_up_from.text">
+                                <h6>{{ pick_up_from.text }}</h6>
+                            </div>
+                            <div class="form-group" ng-show="!pick_up_from.text">
+                                <h6>-</h6>
                             </div>
                             <div class="form-group">
                                 <h6>{{a.expiredDate}}</h6>
@@ -72,11 +78,11 @@
                     <div class="col-sm-9">
                         <div class="form-inline">
                             <label class="col-sm-3">สายงาน</label>
-                            <input type="text" maxlength="11" class="form-control col-sm-5" ng-model="field_of_work">
+                            <input type="text" maxlength="11" class="form-control col-sm-5" ng-init="field_of_work = {text:''}" ng-model="field_of_work.text">
                         </div><br>
                         <div class="form-inline">
                             <label class="col-sm-3">รับของจาก</label>
-                            <input type="text" maxlength="13" class="form-control col-sm-5" ng-init="pick_up_from = 'คุณ'" ng-model="pick_up_from">
+                            <input type="text" maxlength="13" class="form-control col-sm-5" ng-init="pick_up_from = {text:''}" ng-model="pick_up_from.text">
                         </div><br>
                         <div class="form-inline">
                             &nbsp;&nbsp;&nbsp;&nbsp;
